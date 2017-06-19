@@ -1,4 +1,8 @@
-# proj-profilePortal
+# django-test-project
+A test repo for the django profile portal.
+#### (Look into the source folder for source files)
+
+# Profile-Portal
 * Automatic profile portal for the members of an organisation.
 * The portal is intended for IT/CS based orgs. where the data is grabbed from common websites like SPOJ, Codechef, GitHub, etc. and displayed in a consolidated form.
 

@@ -1,0 +1,4 @@
+{% if user.username %}
+<h2>  Hello {{ user.username }}!<br> Welcome to the ProfilePortal </h2>
+{% endif %}
+<a href="{% url 'logout_user' %}">Logout</a>
