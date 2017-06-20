@@ -1,0 +1,28 @@
+<h1>Welcome {{user.username}} to the details page</h1>
+
+<form method="POST" action="{% url 'details' %}">
+
+	<label><p>RollNo:</p></label>
+	<input type="text" id="id_RollNo" name="RollNo">
+	<br><br>
+	<label><p>CurrentSem:</p></label>
+	<input type="text" id="id_CurrentSem" name="CurrentSem"> 
+	<br><br>
+	<label><p>name:</p></label>
+	<input type="text" id="id_name" name="name">
+	<br><br>
+	<label><p>hackerearth:</p></label>
+	<input type="text" id="id_hackerearth" name="hackerearth">
+	<br><br>
+	<label><p>codechef:</p></label>
+	<input type="text" id="id_codechef" name="codechef">
+	<br><br>
+	<label><p>spoj:</p></label>
+	<input type="text" id="id_spoj" name="spoj">
+	<br><br>
+	<label><p>github:</p></label>
+	<input type="text" id="id_github" name="github">  
+	<br><br>
+	<button type="submit">Submit</button>   
+
+</form>	

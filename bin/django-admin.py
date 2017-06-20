@@ -1,4 +1,4 @@
-#!/Users/nvravicharan/Desktop/django-test-project/bin/python2.7
+#!/Users/nvravicharan/Desktop/sprofileportal/bin/python2.7
 from django.core import management
 
 if __name__ == "__main__":
