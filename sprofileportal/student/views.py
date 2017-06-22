@@ -14,8 +14,6 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 import requests
-import bs4 as bs
-import urllib.request
 from bs4 import BeautifulSoup
 
 def codechef(username):
@@ -63,8 +61,8 @@ def spoj(username):
 
 def github(username):
     url = "https://github.com/"+username
-    sauce = urllib.request.urlopen(url).read()    
-    soup = bs.BeautifulSoup(sauce,'lxml')     # lxml is a parser
+    sauce = requests.get(url)   
+    soup = BeautifulSoup(sauce.content,'html.parser')     # lxml is a parser
     #print(soup)
 
     things = soup.find_all('span',class_='Counter')

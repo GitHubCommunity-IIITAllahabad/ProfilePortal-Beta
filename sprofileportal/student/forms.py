@@ -11,7 +11,7 @@ class UserForm(forms.ModelForm):
 class StudentForm(forms.ModelForm):   
     class Meta:
         model = Student
-        fields = ['enrollment_no','first_name','last_name','current_semester','graduation_year','image']
+        fields = ['enrollment_no','first_name','last_name','current_semester','graduation_year']
         
 
 class StudentSiteForm(forms.ModelForm):   
