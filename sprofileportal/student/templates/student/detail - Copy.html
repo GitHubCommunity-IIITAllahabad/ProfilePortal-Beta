@@ -1,0 +1,42 @@
+{% extends 'student/base.html' %}
+{% block title %}Details page{% endblock %}
+{% block body %}
+
+
+
+<h1>{{student.enrollment_no}}</h1>
+<h3>{{student.first_name}}</h3>
+<h3>{{student.user}}</h3>
+
+{% if request.user.id == student.user.id %}
+<h3 style="text-align:center;"><a href="{% url 'student:studentsite' %}">Add Site</a></h3>
+<br><h2>Sites</h2><hr><br>
+
+	{% for site in student.user.studentsite_set.all %}
+                {% if site.site.site_name == "github" %}
+		<label for="site{{ forloop.counter}}">
+			{{site.site}} -- 
+                        {{site.username}}
+			
+		</label><br>
+                {% else %}
+                <label for="site{{ forloop.counter}}">
+			{{site.site}}
+			
+		</label><br>
+                {% endif %}
+	{% endfor %}
+
+
+{% else %}
+<br><h2>Sites</h2><br>
+
+	{% for site in student.user.studentsite_set.all %}
+		<label for="site{{ forloop.counter}}">
+			{{site.site}}
+			
+		</label><br>
+	{% endfor %}
+{% endif %}
+
+{% endblock %}

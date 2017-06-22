@@ -1,0 +1,24 @@
+{% extends 'student/base.html' %}
+
+{% block body %}
+	{% if object_list %}
+    	
+    	<ul>
+		<div class="row">
+		    {% for student in object_list %}
+			
+						<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><center>
+							<div class="thumbnail" style="height:270px;width:300px;">
+								
+								<b><a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a></b><br>
+							</div>
+						</center></div>
+						
+			
+		    {% endfor %}
+		</div>
+    	</ul>
+	{% else %}
+   	         <h3>You don't have any student</h3>
+	{% endif %}
+{% endblock %}

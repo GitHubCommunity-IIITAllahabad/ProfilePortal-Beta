@@ -4,14 +4,9 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from .models import StudentSite
-from .forms import StudentSiteForm
+from .models import Student, Site, StudentSite
 
-# Register your models here.
-class StudentSiteAdmin(admin.ModelAdmin):
-	list_display = ["__unicode__","timestamp","updated_on"]
-	form = StudentSiteForm
-	#class Meta:
-	#	model = StudentSite
+admin.site.register(Student)
+admin.site.register(Site)
+admin.site.register(StudentSite)
 
-admin.site.register(StudentSite,StudentSiteAdmin)

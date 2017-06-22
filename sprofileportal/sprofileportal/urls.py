@@ -15,14 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from student.views import index,login_user,register,logout_user,details
+from student import views
+from django.conf.urls import url, include
 
 urlpatterns = [
-   
-   	url(r'^$',index,name='index'),
-    url(r'^login_user/$',login_user,name='login_user'),
-    url(r'^register/$',register,name="register"),
-    url(r'^logout_user/$',logout_user,name='logout_user'),
     url(r'^admin/', admin.site.urls),
-    url(r'^details/$',details,name='details')
+    url(r'^studentportal/', include('student.urls')),
 ]

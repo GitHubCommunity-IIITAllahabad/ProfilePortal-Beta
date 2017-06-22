@@ -1,4 +1,4 @@
-#!/Users/nvravicharan/Desktop/sprofileportal/bin/python
+#!/Users/nvravicharan/Desktop/proj-profilePortal/bin/python
 
 import sys
 import getopt

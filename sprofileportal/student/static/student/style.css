@@ -1,0 +1,48 @@
+html,body { 
+  background: url(images/back.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.navbar{
+	border-radius:0;
+	
+}
+
+.navbar-brand{
+	font-family:'Satisfy', cursive; 
+}
+
+a {
+	text-decoration: none;
+}
+hr {
+			border:none;
+  			height: 20px;
+ 			width: 60%;
+			height: 50px;
+			margin-top: 0;
+			border-bottom: 1px solid #1f1209;
+	  		box-shadow: 0 10px 10px -10px #333;
+      		margin: -50px auto 10px; 
+}
+.header {
+			text-align: center;
+			font-weight: 600;
+			font-family: Dosis;
+			font-size: 50px;
+			color: black;
+			margin-top: 5%;
+		}
+		#header_l {
+ 			border:none;
+  			height: 20px;
+ 			width: 60%;
+			height: 50px;
+			margin-top: 0;
+			border-bottom: 1px solid #1f1209;
+	  		box-shadow: 0 20px 20px -20px #333;
+      		margin: -50px auto 10px; 
+}

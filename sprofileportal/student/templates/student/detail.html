@@ -1,0 +1,136 @@
+{% extends 'student/base.html' %}
+{% block title %}Details page{% endblock %}
+{% block body %}
+<div class="conatainer">
+		<div class="header">Profile</div>
+		<hr id="header_l"><br>
+</div>
+<div class="row">
+<div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+{% if student.image %}
+<img src="{{ student.image.url }}" class="img-responsive">
+{% endif %}
+<h1>{{student.enrollment_no}}</h1>
+<h3>{{student.first_name}}</h3>
+<h3>{{student.user}}</h3>
+
+{% if request.user.id == student.user.id %}
+<h3><a href="{% url 'student:studentsite' %}">Add Site</a></h3>
+{% else %}
+<br>
+{% endif %}
+</div>
+<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+<div class="container">
+	  <!-- Nav tabs -->
+	  <ul class="nav nav-tabs" role="tablist" style="text-transform:uppercase;">
+		<li role="presentation" class="active"><a href="#TOPS" aria-controls="TOPS" role="tab" data-toggle="tab">Tops</a></li>
+		<li role="presentation"><a href="#GITHUB" aria-controls="GITHUB" role="tab" data-toggle="tab" style="font-size:15px;">GITHUB</a></li>
+		<li role="presentation"><a href="#SPOJ" aria-controls="SPOJ" role="tab" data-toggle="tab">SPOJ</a></li>
+		<li role="presentation"><a href="#CODECHEF" aria-controls="CODECHEF" role="tab" data-toggle="tab">CODECHEF</a></li>
+		<li role="presentation"><a href="#CODEBUDDY" aria-controls="CODEBUDDY" role="tab" data-toggle="tab">CODEBUDDY</a></li>
+                <li role="presentation"><a href="#HACKEREARTH" aria-controls="HACKEREARTH" role="tab" data-toggle="tab">HACKEREARTH</a></li>
+		
+	  </ul>
+	  
+	<!-- <hr style="width:100%"> -->
+	  <br><br>
+	  <!-- Tab panes -->
+          <font size="5">
+	  <div class="tab-content">
+		<div role="tabpanel" class="tab-pane fade in active" id="TOPS">
+			<div class="content">
+				<div class="container">
+
+                                </div>
+                        </div>
+                </div>
+         
+          
+		<div role="tabpanel" class="tab-pane fade" id="GITHUB">
+			<div class="content">
+				<div class="container">
+				    {% for site in student.user.studentsite_set.all %}
+                                    {% if site.site.site_name == "github" %}
+                                          <label>Username</label>: {{site.username}}<br>
+			                  <label>Repositories</label>: {{site.site_repo}}<br>
+                                          <label>Stars</label>: {{site.site_star}}<br>
+                                          <label>Contributions</label>: {{site.site_contribution}}<br>
+                                          <label>Followers</label>: {{site.site_follower}}<br>
+                                          <label>Following</label>: {{site.site_following}}<br>
+		                        <br>
+                                    {% endif %}
+                                    {% endfor %}
+
+                                </div>
+                        </div>
+                </div>
+          
+          
+		<div role="tabpanel" class="tab-pane fade" id="SPOJ">
+			<div class="content">
+				<div class="container">
+                                    {% for site in student.user.studentsite_set.all %}
+                                    {% if site.site.site_name == "spoj" %}
+		                        <label>Username</label>: {{site.username}}<br>
+			                <label>World Rank</label>: {{site.site_rank}}<br>
+                                        <label>Points</label>: {{site.site_point}}<br>
+                                        <label>Question Solved</label>: {{site.site_ques_solved}}<br>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                        </div>
+                </div>
+          
+         
+		<div role="tabpanel" class="tab-pane fade" id="CODECHEF">
+			<div class="content">
+				<div class="container">
+                                    {% for site in student.user.studentsite_set.all %}
+                                    {% if site.site.site_name == "codechef" %}
+		                        <label>Username</label>: {{site.username}}<br>
+			                <label>World Rank</label>: {{site.site_rank}}<br>
+                                        <label>Rating</label>: {{site.site_rating}}<br>
+			                <label>Question Solved</label>: {{site.site_ques_solved}}<br>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                        </div>
+                </div>
+                
+                <div role="tabpanel" class="tab-pane fade" id="CODEBUDDY">
+			<div class="content">
+				<div class="container">
+                                    {% for site in student.user.studentsite_set.all %}
+                                    {% if site.site.site_name == "codebuddy" %}
+		                        <label>Username</label>: {{site.username}}<br>
+			                <label>World Rank</label>: {{site.site_rank}}<br>
+                                        <label>Points</label>: {{site.site_point}}<br>
+			                <label>Question Solved</label>: {{site.site_ques_solved}}<br>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                        </div>
+                </div>
+                
+		<div role="tabpanel" class="tab-pane fade" id="HACKEREARTH">
+			<div class="content">
+				<div class="container">
+                                    {% for site in student.user.studentsite_set.all %}
+                                    {% if site.site.site_name == "hackerearth" %}
+		                        <label>
+			                  {{site.site}} -- 
+                                          {{site.username}}
+			
+		                        </label><br>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                        </div>
+                </div>
+          </div>
+          </font>
+</div>
+</div>
+
+{% endblock %}
