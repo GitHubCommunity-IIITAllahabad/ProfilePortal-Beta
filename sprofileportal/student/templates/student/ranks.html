@@ -1,0 +1,141 @@
+{% extends 'student/base.html' %}
+{% block title %}Details page{% endblock %}
+{% block body %}
+<div class="conatainer">
+		<div class="header">Ranking</div>
+		
+		<hr id="header_l"><br>
+</div>
+
+<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+<div class="container">
+	  <!-- Nav tabs -->
+	  <ul class="nav nav-tabs" role="tablist" style="text-transform:uppercase;">
+		<li role="presentation" class="active"><a href="#TOPS" aria-controls="TOPS" role="tab" data-toggle="tab">Tops</a></li>
+		<li role="presentation"><a href="#GITHUB" aria-controls="GITHUB" role="tab" data-toggle="tab" style="font-size:15px;">GITHUB</a></li>
+		<li role="presentation"><a href="#SPOJ" aria-controls="SPOJ" role="tab" data-toggle="tab">SPOJ</a></li>
+		<li role="presentation"><a href="#CODECHEF" aria-controls="CODECHEF" role="tab" data-toggle="tab">CODECHEF</a></li>
+		<li role="presentation"><a href="#CODEBUDDY" aria-controls="CODEBUDDY" role="tab" data-toggle="tab">CODEBUDDY</a></li>
+		<li role="presentation"><a href="#HACKEREARTH" aria-controls="HACKEREARTH" role="tab" data-toggle="tab">HACKEREARTH</a></li>
+		
+	  </ul>
+	  
+	<!-- <hr style="width:100%"> -->
+	  <br><br>
+	  <!-- Tab panes -->
+          <font size="5">
+	  <div class="tab-content">
+		<div role="tabpanel" class="tab-pane fade in active" id="TOPS">
+			<div class="content">
+				<div class="container">
+
+                                </div>
+                        </div>
+                </div>
+         
+          
+		<div role="tabpanel" class="tab-pane fade" id="GITHUB">
+			<div class="content">
+				<div class="container">
+                                    
+                                    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Username</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Contribution</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Repositories</label><br><br>
+                                    
+                                    <ol type="1">
+				    {% for site in github %}
+                                    {% if site.site.site_name == "github" %}
+                                         {% if request.user == site.user %}
+                                         <font color="yellow">
+                                         {% else %}
+                                         <font color="black">
+                                         {% endif %}
+                                         <li> {{site.username}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{site.site_contribution}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{site.site_repo}} </li>
+                                         </font>
+                                    {% endif %}
+                                    {% endfor %}
+                                      
+				    </ol>
+                                </div>
+                        </div>
+                </div>
+          
+          
+		<div role="tabpanel" class="tab-pane fade" id="SPOJ">
+			<div class="content">
+				<div class="container">
+                                    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Username</label>-------<label>Points</label>-------<label>World Rank</label><br><br>
+                                    <ol type="1">
+				    {% for site in spoj %}
+                                    {% if site.site.site_name == "spoj" %}
+                                         {% if request.user == site.user %}
+                                         <font color="yellow">
+                                         {% else %}
+                                         <font color="black">
+                                         {% endif %}
+                                         <li> {{site.username}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{site.site_point}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{site.site_rank}} </li>
+                                    	 </font>
+				    {% endif %}
+                                    {% endfor %}
+                                      
+				    </ol>
+                                </div>
+                        </div>
+                </div>
+          
+         
+		<div role="tabpanel" class="tab-pane fade" id="CODECHEF">
+			<div class="content">
+				<div class="container">
+                                    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Username</label>-------<label>Rating</label>-------<label>World Rank</label><br><br>
+                                    <ol type="1">
+				    {% for site in codechef %}
+                                    {% if site.site.site_name == "codechef" %}
+                                         {% if request.user == site.user %}
+                                         <font color="yellow">
+                                         {% else %}
+                                         <font color="black">
+                                         {% endif %}
+                                         <li> {{site.username}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{site.site_rating}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{site.site_rank}} </li>
+                                         </font>
+                                    {% endif %}
+                                    {% endfor %}
+                                      
+				    </ol>
+                                </div>
+                        </div>
+                </div>
+          	
+		<div role="tabpanel" class="tab-pane fade" id="CODEBUDDY">
+			<div class="content">
+				<div class="container">
+                                    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Username</label>-------<label>Points</label>-------<label>World Rank</label><br><br>
+                                    <ol type="1">
+				    {% for site in codebuddy %}
+                                    {% if site.site.site_name == "codebuddy" %}
+                                         {% if request.user == site.user %}
+                                         <font color="yellow">
+                                         {% else %}
+                                         <font color="black">
+                                         {% endif %}
+                                         <li> {{site.username}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{site.site_point}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{site.site_rank}} </li>
+                                         </font>
+                                    {% endif %}
+                                    {% endfor %}
+                                      
+				    </ol>
+                                </div>
+                        </div>
+                </div>
+		
+		<div role="tabpanel" class="tab-pane fade" id="HACKEREARTH">
+			<div class="content">
+				<div class="container">
+                                     
+                                </div>
+                        </div>
+                </div>
+          </div>
+          </font>
+</div>
+</div>
+
+{% endblock %}
