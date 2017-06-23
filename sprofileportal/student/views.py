@@ -93,12 +93,12 @@ def codebuddy(username):
 
 temp_object_list=[]
 
-def BaseView(request):
-    query = request.GET.get("q")
-    if query:
-       print('a') 
-       temp_object_list = Student.object.filter(Q(enrollment_no__icontains=query)).order_by('enrollment_no')
-       return render(request,'student/base.html',{})
+# def BaseView(request):
+#     query = request.GET.get("q")
+#     if query:
+#        print('a') 
+#        temp_object_list = Student.object.filter(Q(enrollment_no__icontains=query)).order_by('enrollment_no')
+#        return render(request,'student/base.html',{})
 
 class IndexView(generic.ListView):
     template_name = 'student/index.html'
