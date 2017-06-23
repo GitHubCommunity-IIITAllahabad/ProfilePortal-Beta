@@ -94,7 +94,11 @@
 	</div>
     </div>
 </nav>
-<h3>user = {{request.user.username}}</h3>
+{% if not user.username %}
+<h3 style ="text-align: center">User Not logged in. Please log in to Add or Edit your credentials</h3>
+{% else %}
+<h3 style ="text-align: center">Welcome {{user.username}}</h3>
+{% endif %}
 {% block body %}
 {% endblock %}
 
