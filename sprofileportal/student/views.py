@@ -11,6 +11,7 @@ from django.contrib.auth import authenticate, login
 from django.views.generic import View
 from .forms import UserForm,StudentForm, StudentSiteForm
 from django.contrib.auth import logout
+from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 import requests
@@ -90,10 +91,26 @@ def codebuddy(username):
             return (output)
     return (-1)
 
+temp_object_list=[]
+
+# def BaseView(request):
+#     query = request.GET.get("q")
+#     if query:
+#        print('a') 
+#        temp_object_list = Student.object.filter(Q(enrollment_no__icontains=query)).order_by('enrollment_no')
+#        return render(request,'student/base.html',{})
+
 class IndexView(generic.ListView):
     template_name = 'student/index.html'
     def get_queryset(self):
-        return Student.objects.filter().order_by('enrollment_no')
+        #query = request.GET.get("q")
+        object_list =  Student.objects.filter().order_by('enrollment_no')
+        query = self.request.GET.get("q")
+        if query:
+           print('a') 
+           temp_object_list = object_list.filter(Q(enrollment_no__icontains=query)).order_by('enrollment_no')
+           object_list = temp_object_list
+        return object_list
 
 class DetailView(generic.DetailView):
     model = Student
