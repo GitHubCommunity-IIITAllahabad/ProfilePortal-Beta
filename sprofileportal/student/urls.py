@@ -24,6 +24,7 @@ urlpatterns = [
     # /music/
     url(r'^$', views.IndexView.as_view(), name='index'),
     #url(r'^$',views.index,name='index')
+    url(r'^base/$',views.BaseView,name='base'),
     url(r'^login/$', auth_views.login, {'template_name': 'student/login.html'}, name='login'),
     url(r'^logout/$', views.logout_view, name='logout'),
     url(r'^register/$', views.UserFormView.as_view(), name='register'),
