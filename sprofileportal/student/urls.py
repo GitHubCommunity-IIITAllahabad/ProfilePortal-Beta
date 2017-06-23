@@ -20,15 +20,16 @@ from . import views
 
 app_name = 'student'
 
-urlpatterns = [
+urlpatterns = [ 
     # /music/
     url(r'^$', views.IndexView.as_view(), name='index'),
+    #url(r'^$',views.index,name='index')
     url(r'^login/$', auth_views.login, {'template_name': 'student/login.html'}, name='login'),
-     url(r'^logout/$', views.logout_view, name='logout'),
-     url(r'^register/$', views.UserFormView.as_view(), name='register'),
+    url(r'^logout/$', views.logout_view, name='logout'),
+    url(r'^register/$', views.UserFormView.as_view(), name='register'),
     url(r'^ranks/$', views.RanksView.as_view(), name='ranks'),
      #url(r'^studentcreate/$', views.StudentCreate.as_view(), name='studentcreate'),
-     url(r'^register/studentcreate/$', views.StudentFormView.as_view(), name='studentcreate'),
+    url(r'^register/studentcreate/$', views.StudentFormView.as_view(), name='studentcreate'),
     url(r'^register/studentupdate/$', views.UpdateStudentFormView.as_view(), name='studentupdate'),
     url(r'^register/studentsite/$', views.StudentSiteFormView.as_view(), name='studentsite'),
     # /music/<album_id>/

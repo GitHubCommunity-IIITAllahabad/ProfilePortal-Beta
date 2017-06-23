@@ -92,7 +92,6 @@ def codebuddy(username):
 
 class IndexView(generic.ListView):
     template_name = 'student/index.html'
-
     def get_queryset(self):
         return Student.objects.filter().order_by('enrollment_no')
 
