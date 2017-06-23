@@ -20,7 +20,7 @@ class Student(models.Model):
     #image = models.FileField(blank=True, null=True)
 
     def __unicode__(self):
-	return self.user
+	return unicode(self.user)
 
 class Site(models.Model):
     site_name = models.CharField(max_length=200, default=None)
