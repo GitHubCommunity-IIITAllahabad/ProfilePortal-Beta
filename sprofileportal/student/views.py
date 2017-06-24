@@ -275,10 +275,10 @@ class StudentSiteFormView(View):
 class RanksView(View):
 
     def get(self,request):
-        codechef = StudentSite.objects.filter().order_by('site_rating')
-        spoj = StudentSite.objects.filter().order_by('site_point')
-        github = StudentSite.objects.filter().order_by('site_contribution')
-        codebuddy = StudentSite.objects.filter().order_by('site_point')
+        codechef = StudentSite.objects.filter().order_by('-site_rating')
+        spoj = StudentSite.objects.filter().order_by('-site_point')
+        github = StudentSite.objects.filter().order_by('-site_contribution')
+        codebuddy = StudentSite.objects.filter().order_by('-site_point')
         context = {'codechef':codechef, 'spoj':spoj, 'github':github,'codebuddy':codebuddy}
         return render(request,'student/ranks.html',context)
         
