@@ -21,4 +21,5 @@ from django.conf.urls import url, include
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^studentportal/', include('student.urls')),
+    url(r'^$',views.RedirectSite,name='RedirectSite')
 ]

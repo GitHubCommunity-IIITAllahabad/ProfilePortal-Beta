@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render,redirect
 from django.shortcuts import get_object_or_404
+from django.contrib.sites.shortcuts import get_current_site
 from .models import Student, StudentSite
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -16,6 +17,12 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 import requests
 from bs4 import BeautifulSoup
+
+def RedirectSite(request):
+    CurrentURL = get_current_site(request)
+    RedirectURL = 'http://' + str(CurrentURL) + '/studentportal/'
+    print(RedirectURL)
+    return redirect(RedirectURL)
 
 def codechef(username):
     head = "https://wwww.codechef.com/users/"
