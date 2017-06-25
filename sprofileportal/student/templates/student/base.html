@@ -8,7 +8,8 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
 	<link rel="stylesheet" type="text/css" href="{% static 'student/style.css' %}" />
-
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <script type="text/javascript" src="{% static 'student/voice.js' %}"></script>
 </head>
 <body>
 
@@ -36,14 +37,26 @@
 			
 		</ul>
 
-		<form class="navbar-form navbar-left" role="search" method="GET" action="">
+		<!--<form class="navbar-form navbar-left" role="search" method="GET" action="">
 			<div class="form-group">
 				<input type="text" palceholder="Search here" class="form-control" name="q" value="{{ request.GET.q }}" >
 			</div>
 			<button type="submit" class="btn btn-default">Search</button>
 		
+		    </form>
+                -->
+                <form class="navbar-form navbar-left" role="search" method="get" action="#">
+			
+                        <div class="form-group">
+				<input type="text" palceholder="Search here" class="form-control" name="q" id="q" value="{{ request.GET.q }}" />
+			</div>
+                        <div class="form-group">
+					<i class="fa fa-microphone" aria-hidden="true" onclick="startDictation()" style="color: white;margin-left: 35%;font-size: 20px;margin-top: 25%;"></i>
+			</div>&nbsp;&nbsp;
+                        <div class="form-group">
+			<button type="submit" class="btn btn-default" id="searchbtn" >Search</button>
+		        </div>
 		</form>
-
 		<ul class="nav navbar-nav navbar-right">
 			{% if request.user.is_authenticated %}
 			<li class="">
