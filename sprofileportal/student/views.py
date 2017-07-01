@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render,redirect
 from django.shortcuts import get_object_or_404
 from django.contrib.sites.shortcuts import get_current_site
-from .models import Student, StudentSite
+from .models import Student, StudentSite, Site
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
