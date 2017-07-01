@@ -32,6 +32,7 @@ urlpatterns = [
      #url(r'^studentcreate/$', views.StudentCreate.as_view(), name='studentcreate'),
     url(r'^register/studentcreate/$', views.StudentFormView.as_view(), name='studentcreate'),
     url(r'^register/studentupdate/$', views.UpdateStudentFormView.as_view(), name='studentupdate'),
+    url(r'^register/studentsiteupdate/$', views.UpdateStudentSiteFormView.as_view(), name='studentsiteupdate'),
     url(r'^register/studentsite/$', views.StudentSiteFormView.as_view(), name='studentsite'),
     # /music/<album_id>/
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
