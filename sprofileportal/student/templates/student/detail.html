@@ -11,11 +11,11 @@
 <img src="{{ student.image.url }}" class="img-responsive">
 {% endif %}
 <h1>{{student.enrollment_no}}</h1>
-<h3>{{student.first_name}}</h3>
 <h3>{{student.user}}</h3>
 
 {% if request.user.id == student.user.id %}
 <h3><a href="{% url 'student:studentsite' %}">Add Site</a></h3>
+<h3><a href="{% url 'student:studentsiteupdate' %}">Update Site</a></h3>
 {% else %}
 <br>
 {% endif %}
