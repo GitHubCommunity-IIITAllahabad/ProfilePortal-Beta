@@ -229,6 +229,42 @@ class UpdateStudentFormView(View):
 
         return render(request, self.template_name, {'form': form})
 
+class UpdateStudentSiteFormView(View):
+    def get(self, request):
+        if request.user.is_authenticated():
+            my_record = StudentSite.objects.filter(user=request.user)
+            for record in my_record:
+                if record.site.site_name == "github":
+                    out = github(record.username).split(" ")
+                    record.site_repo = int(out[0])
+                    record.site_star = int(out[1])
+                    record.site_follower = int(out[2])
+                    record.site_following = int(out[3])
+                    record.site_contribution = int(out[4])
+                    record.save()
+                if record.site.site_name == 'codechef':
+                    out = codechef(record.username).split(" ")
+                    record.site_rating = int(out[0])
+                    record.site_rank = int(out[1])
+                    record.save()
+                if record.site.site_name == 'spoj':
+                    out = spoj(record.username).split(" ")
+                    record.site_rank = int(out[2].lstrip('#'))
+                    record.site_point = float(out[3].lstrip('('))
+                    record.site_ques_solved = int(out[5])
+                    record.save()
+                if record.site.site_name == 'codebuddy':
+                    out = codebuddy(record.username).split(" ")
+                    record.site_rank = int(out[0])
+                    record.site_ques_solved = int(out[1])
+                    record.site_point = float(out[2])
+                    record.save()
+            s = "http://127.0.0.1:8000/studentportal/"+str(request.user.id)+"/"
+            return redirect(s)
+        else:
+            return redirect('student:index')
+    
+    
 class StudentSiteFormView(View):
     
     form_class = StudentSiteForm
