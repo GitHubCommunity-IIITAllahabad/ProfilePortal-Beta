@@ -38,8 +38,9 @@
 			<div class="content">
 				<div class="container">
                                     
-                                    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Username</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Contribution</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Repositories</label><br><br>
-                                    
+                                    <div class="row"><center>
+                                        <div class="col-lg-3 col-md-3">Username</div><div class="col-lg-3 col-md-3">Enrollment No</div><div class="col-lg-3 col-md-3">Contributions</div><div class="col-lg-3 col-md-3">Repositories</div>
+                                    </center></div>
                                     <ol type="1">
 				    {% for site in github %}
                                     {% if site.site.site_name == "github" %}
@@ -48,7 +49,10 @@
                                          {% else %}
                                          <font color="black">
                                          {% endif %}
-                                         <li> {{site.username}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{site.site_contribution}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{site.site_repo}} </li>
+                                         <div class="row"><center>
+                                        <li> <div class="col-lg-3 col-md-3">{{site.username}}</div><div class="col-lg-3 col-md-3">{% for student in student %}{% if student.user == site.user%}{{student.enrollment_no}}{% endif %}{% endfor %}</div><div class="col-lg-3 col-md-3">{{site.site_contribution}}</div><div class="col-lg-3 col-md-3">{{site.site_repo}}</div>
+                                    </li></center></div> 
+                                          
                                          </font>
                                     {% endif %}
                                     {% endfor %}
@@ -62,7 +66,9 @@
 		<div role="tabpanel" class="tab-pane fade" id="SPOJ">
 			<div class="content">
 				<div class="container">
-                                    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Username</label>-------<label>Points</label>-------<label>World Rank</label><br><br>
+                                    <div class="row"><center>
+                                        <div class="col-lg-3 col-md-3">Username</div><div class="col-lg-3 col-md-3">Enrollment No</div><div class="col-lg-3 col-md-3">Points</div><div class="col-lg-3 col-md-3">World Rank</div>
+                                    </center></div>
                                     <ol type="1">
 				    {% for site in spoj %}
                                     {% if site.site.site_name == "spoj" %}
@@ -71,7 +77,9 @@
                                          {% else %}
                                          <font color="black">
                                          {% endif %}
-                                         <li> {{site.username}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{site.site_point}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{site.site_rank}} </li>
+                                         <div class="row"><center>
+                                        <li> <div class="col-lg-3 col-md-3">{{site.username}}</div><div class="col-lg-3 col-md-3">{% for student in student %}{% if student.user == site.user%}{{student.enrollment_no}}{% endif %}{% endfor %}</div><div class="col-lg-3 col-md-3">{{site.site_point}}</div><div class="col-lg-3 col-md-3">{{site.site_rank}}</div>
+                                    </li></center></div>
                                     	 </font>
 				    {% endif %}
                                     {% endfor %}
@@ -85,7 +93,9 @@
 		<div role="tabpanel" class="tab-pane fade" id="CODECHEF">
 			<div class="content">
 				<div class="container">
-                                    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Username</label>-------<label>Rating</label>-------<label>World Rank</label><br><br>
+                                    <div class="row"><center>
+                                        <div class="col-lg-3 col-md-3">Username</div><div class="col-lg-3 col-md-3">Enrollment No</div><div class="col-lg-3 col-md-3">Rating</div><div class="col-lg-3 col-md-3">World Rank</div>
+                                    </center></div>
                                     <ol type="1">
 				    {% for site in codechef %}
                                     {% if site.site.site_name == "codechef" %}
@@ -94,7 +104,10 @@
                                          {% else %}
                                          <font color="black">
                                          {% endif %}
-                                         <li> {{site.username}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{site.site_rating}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{site.site_rank}} </li>
+                                         <div class="row"><center>
+                                        <li> <div class="col-lg-3 col-md-3">{{site.username}}</div><div class="col-lg-3 col-md-3">{% for student in student %}{% if student.user == site.user%}{{student.enrollment_no}}{% endif %}{% endfor %}</div><div class="col-lg-3 col-md-3">{{site.site_rating}}</div><div class="col-lg-3 col-md-3">{{site.site_rank}}</div>
+                                        </li></center></div>
+                                            
                                          </font>
                                     {% endif %}
                                     {% endfor %}
@@ -107,7 +120,9 @@
 		<div role="tabpanel" class="tab-pane fade" id="CODEBUDDY">
 			<div class="content">
 				<div class="container">
-                                    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Username</label>-------<label>Points</label>-------<label>World Rank</label><br><br>
+                                    <div class="row"><center>
+                                        <div class="col-lg-3 col-md-3">Username</div><div class="col-lg-3 col-md-3">Enrollment No</div><div class="col-lg-3 col-md-3">Points</div><div class="col-lg-3 col-md-3">World Rank</div>
+                                    </center></div>
                                     <ol type="1">
 				    {% for site in codebuddy %}
                                     {% if site.site.site_name == "codebuddy" %}
@@ -116,7 +131,9 @@
                                          {% else %}
                                          <font color="black">
                                          {% endif %}
-                                         <li> {{site.username}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{site.site_point}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{site.site_rank}} </li>
+                                         <div class="row"><center>
+                                        <li> <div class="col-lg-3 col-md-3">{{site.username}}</div><div class="col-lg-3 col-md-3">{% for student in student %}{% if student.user == site.user%}{{student.enrollment_no}}{% endif %}{% endfor %}</div><div class="col-lg-3 col-md-3">{{site.site_point}}</div><div class="col-lg-3 col-md-3">{{site.site_rank}}</div>
+                                    </li></center></div>
                                          </font>
                                     {% endif %}
                                     {% endfor %}
