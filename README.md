@@ -11,9 +11,9 @@
 * A python script scrapes the data from the profiles and displays it in the portal.
 * Flexibility : Any user can view the profile of another using the unique ID (Roll no.)
 
-## Building on you machine
+## Building on your machine
 
-### Setup an environment
+### Setup an environment:
 ```
 git clone https://github.com/RavicharanN/proj-profilePortal
 cd proj-Profileportal
@@ -21,7 +21,7 @@ virtualenv .
 source bin/activate
 
 ```
-### Installation 
+### Installation: 
 ```
 pip install django 
 pip install BeautifulSoup4
@@ -29,7 +29,7 @@ pip install requests
 pip install urllib3
 
 ```
-### Run project 
+### Run project: 
 ```
 cd sprofileportal 
 python manage.py runserver
