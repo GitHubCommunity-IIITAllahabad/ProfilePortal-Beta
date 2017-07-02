@@ -80,9 +80,14 @@ def github(username):
     FollowingNo = int(things[3].text)
 
     contribution = (soup.find('h2',class_='f4 text-normal mb-2').text).lstrip().split(" ")
-    no_contribution = int(contribution[0])
-    #print (no_contribution)
-    s = str(repoNo)+" "+str(starsNo)+" "+str(FollowersNo)+" "+str(FollowingNo)+" "+str(no_contribution)
+    no_contribution = contribution[0]
+    contribution_no=""
+    for k in no_contribution:
+        if k>='0' and k<='9':
+            contribution_no+=k
+    contribution_no = int(contribution_no)
+    #print (contribution_no)
+    s = str(repoNo)+" "+str(starsNo)+" "+str(FollowersNo)+" "+str(FollowingNo)+" "+str(contribution_no)
     return (s)
 
 def codebuddy(username):
