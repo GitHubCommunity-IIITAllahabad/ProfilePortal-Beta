@@ -21,7 +21,7 @@ from bs4 import BeautifulSoup
 def RedirectSite(request):
     CurrentURL = get_current_site(request)
     RedirectURL = 'http://' + str(CurrentURL) + '/studentportal/'
-    print(RedirectURL)
+    #print(RedirectURL)
     return redirect(RedirectURL)
 
 def codechef(username):
@@ -35,7 +35,7 @@ def codechef(username):
     listRating = list(soup.findAll('div',class_="rating-number"))
     rating = list(listRating[0].children)
     rating = rating[0]
-    out = str(rating)
+    out = str(rating.replace(',',''))
     #print ("Rating: "+rating)
 
     listGCR = []  #Global and country ranking.
@@ -45,7 +45,7 @@ def codechef(username):
             listGCR.append(item.get_text()) #Extracting the text from all anchor tags
     #print ("Global Ranking: "+listGCR[0])
     #print ("Country Ranking: "+listGCR[1])
-    out = out + " " + str(listGCR[0])
+    out = out + " " + str(listGCR[0].replace(',',''))
     return out
 
 def spoj(username):
@@ -62,7 +62,7 @@ def spoj(username):
 
     #print (iList[2]) #World rank
     #print (iList[3]) #Institution
-    no_of_questions = int(soup.find('dd').text)
+    no_of_questions = int((soup.find('dd').text).replace(',',''))
     #print(" no. of questions = ",no_of_questions)
     s = str(iList[2].lstrip())+" "+str(no_of_questions)
     return s
@@ -80,12 +80,7 @@ def github(username):
     FollowingNo = int(things[3].text)
 
     contribution = (soup.find('h2',class_='f4 text-normal mb-2').text).lstrip().split(" ")
-    no_contribution = contribution[0]
-    contribution_no=""
-    for k in no_contribution:
-        if k>='0' and k<='9':
-            contribution_no+=k
-    contribution_no = int(contribution_no)
+    contribution_no = int(contribution[0].replace(',',''))
     #print (contribution_no)
     s = str(repoNo)+" "+str(starsNo)+" "+str(FollowersNo)+" "+str(FollowingNo)+" "+str(contribution_no)
     return (s)
@@ -99,7 +94,7 @@ def codebuddy(username):
         parameters = list(i.find_all('label'))
         #print (i.find('label',class_="highlight").text)
         if str(parameters[1].text)==username:
-            output = str(int(parameters[0].text))+" "+str(int(parameters[2].text))+" "+str(float(parameters[3].text))
+            output = str(int((parameters[0].text).replace(',','')))+" "+str(int((parameters[2].text).replace(',','')))+" "+str(float(parameters[3].text))
             return (output)
     return (-1)
 
@@ -119,7 +114,7 @@ class IndexView(generic.ListView):
         object_list =  Student.objects.filter().order_by('enrollment_no')
         query = self.request.GET.get("q")
         if query:
-           print('a') 
+           #print('a') 
            temp_object_list = object_list.filter(Q(enrollment_no__icontains=query)).order_by('enrollment_no')
            object_list = temp_object_list
         return object_list
