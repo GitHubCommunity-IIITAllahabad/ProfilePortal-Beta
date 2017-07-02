@@ -1,6 +1,5 @@
-# django-test-project
-A test repo for the django profile portal.
-#### (Look into the source folder for source files)
+
+#### (Look into the sprofileportal folder for source files)
 
 # Profile-Portal
 * Automatic profile portal for the members of an organisation.
@@ -11,6 +10,32 @@ A test repo for the django profile portal.
 * The details include the CP profiles and Codechef,Hackerrank,Hackerearth,SPOJ and also social coding platforms like Github and Behance
 * A python script scrapes the data from the profiles and displays it in the portal.
 * Flexibility : Any user can view the profile of another using the unique ID (Roll no.)
+
+## Building on you machine
+
+### Setup an environment
+```
+git clone https://github.com/RavicharanN/proj-profilePortal
+cd proj-Profileportal
+virtualenv .
+source bin/activate
+
+```
+### Installation 
+```
+pip install django 
+pip install BeautifulSoup4
+pip install requests 
+pip install urllib3
+
+```
+### Run project 
+```
+cd sprofileportal 
+python manage.py runserver
+
+```
+
 
 ## What does it use ?
 * Beautiful soup module for scraping the data.
