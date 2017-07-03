@@ -284,11 +284,11 @@ class StudentSiteFormView(View):
             my_record = StudentSite.objects.filter(user=request.user)
             flag=0
             for record in my_record:
-                if record.site.site_name == str(form.cleaned_data.get('site')):
+                if record.site.site_name == str(form.cleaned_data.get('site').site_name):
                     flag=1
             my_record = StudentSite.objects.filter()
             for record in my_record:
-                if record.site.site_name == str(form.cleaned_data.get('site')) and record.username == str(form.cleaned_data.get('username')):
+                if record.site.site_name == str(form.cleaned_data.get('site').site_name) and record.username == str(form.cleaned_data.get('username')):
                     flag=1
                 
             if flag==0:
