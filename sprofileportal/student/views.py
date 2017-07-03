@@ -295,7 +295,7 @@ class StudentSiteFormView(View):
                 studentsite = form.save(commit=False)
                 studentsite.user = request.user
                 studentsite.is_active = True
-                site1 = str(form.cleaned_data.get('site'))
+                site1 = str(form.cleaned_data.get('site').site_name)
                 if site1 == 'codechef':
                     out = codechef(form.cleaned_data['username']).split(" ")
                     studentsite.site_rating = int(out[0])
