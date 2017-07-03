@@ -20,7 +20,10 @@ class Student(models.Model):
     #image = models.FileField(blank=True, null=True)
 
     def __unicode__(self):
-	return unicode(self.user)
+        return unicode(self.user)
+
+    def __str__(self):
+        return self.user
 
 class Site(models.Model):
     site_name = models.CharField(max_length=200, default=None)
@@ -28,7 +31,7 @@ class Site(models.Model):
     site_active = models.BooleanField(default=False)
     site_count = models.IntegerField(default=0)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.site_name
 
 class StudentSite(models.Model):
@@ -46,3 +49,6 @@ class StudentSite(models.Model):
     site_following = models.IntegerField(default=None,null=True)
     is_active = models.BooleanField(default=False)
     no_of_sites = models.IntegerField(default=None,null=True)
+
+    def __str__(self):
+        return self.username + " - " + str(self.site)
