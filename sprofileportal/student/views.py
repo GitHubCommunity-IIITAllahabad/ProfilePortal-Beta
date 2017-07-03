@@ -281,33 +281,44 @@ class StudentSiteFormView(View):
         form = self.form_class(request.POST)
         
         if form.is_valid():
-            studentsite = form.save(commit=False)
-            studentsite.user = request.user
-            studentsite.is_active = True
-            site1 = str(form.cleaned_data.get('site'))
-            if site1 == 'codechef':
-                out = codechef(form.cleaned_data['username']).split(" ")
-                studentsite.site_rating = int(out[0])
-                studentsite.site_rank = int(out[1])
-            if site1 == 'spoj':
-                out = spoj(form.cleaned_data['username']).split(" ")
-                studentsite.site_rank = int(out[2].lstrip('#'))
-                studentsite.site_point = float(out[3].lstrip('('))
-                studentsite.site_ques_solved = int(out[5])
-            if site1 == 'github':
-                out = github(form.cleaned_data['username']).split(" ")
-                studentsite.site_repo = int(out[0])
-                studentsite.site_star = int(out[1])
-                studentsite.site_follower = int(out[2])
-                studentsite.site_following = int(out[3])
-                studentsite.site_contribution = int(out[4])
-            if site1 == 'codebuddy':
-                out = codebuddy(form.cleaned_data['username']).split(" ")
-                studentsite.site_rank = int(out[0])
-                studentsite.site_ques_solved = int(out[1])
-                studentsite.site_point = float(out[2])
+            my_record = StudentSite.objects.filter(user=request.user)
+            flag=0
+            for record in my_record:
+                if record.site.site_name == str(form.cleaned_data.get('site')):
+                    flag=1
+            my_record = StudentSite.objects.filter()
+            for record in my_record:
+                if record.site.site_name == str(form.cleaned_data.get('site')) and record.username == str(form.cleaned_data.get('username')):
+                    flag=1
                 
-            studentsite.save()
+            if flag==0:
+                studentsite = form.save(commit=False)
+                studentsite.user = request.user
+                studentsite.is_active = True
+                site1 = str(form.cleaned_data.get('site'))
+                if site1 == 'codechef':
+                    out = codechef(form.cleaned_data['username']).split(" ")
+                    studentsite.site_rating = int(out[0])
+                    studentsite.site_rank = int(out[1])
+                if site1 == 'spoj':
+                    out = spoj(form.cleaned_data['username']).split(" ")
+                    studentsite.site_rank = int(out[2].lstrip('#'))
+                    studentsite.site_point = float(out[3].lstrip('('))
+                    studentsite.site_ques_solved = int(out[5])
+                if site1 == 'github':
+                    out = github(form.cleaned_data['username']).split(" ")
+                    studentsite.site_repo = int(out[0])
+                    studentsite.site_star = int(out[1])
+                    studentsite.site_follower = int(out[2])
+                    studentsite.site_following = int(out[3])
+                    studentsite.site_contribution = int(out[4])
+                if site1 == 'codebuddy':
+                    out = codebuddy(form.cleaned_data['username']).split(" ")
+                    studentsite.site_rank = int(out[0])
+                    studentsite.site_ques_solved = int(out[1])
+                    studentsite.site_point = float(out[2])
+                    
+                studentsite.save()
             s = "http://127.0.0.1:8000/studentportal/"+str(request.user.id)+"/"
             return redirect(s)
         else:
