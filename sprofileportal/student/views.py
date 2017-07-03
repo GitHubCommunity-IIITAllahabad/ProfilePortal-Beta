@@ -288,7 +288,7 @@ class StudentSiteFormView(View):
                     flag=1
             my_record = StudentSite.objects.filter()
             for record in my_record:
-                if record.site.site_name == str(form.cleaned_data.get('site').site_name) and record.username == str(form.cleaned_data.get('username')):
+                if record.site.site_name == str(form.cleaned_data.get('site').site_name) and record.username.lower() == str(form.cleaned_data.get('username').lower()):
                     flag=1
                 
             if flag==0:
