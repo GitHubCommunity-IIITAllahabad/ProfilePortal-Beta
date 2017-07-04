@@ -223,9 +223,13 @@ class UpdateStudentFormView(View):
         
     def get(self, request):
         if request.user.is_authenticated():
-            my_record = Student.objects.get(id=request.user.id)
-            form = self.form_class(instance=my_record)
-            return render(request, self.template_name, {'form': form})
+            my_record = Student.objects.filter(id=request.user.id)
+            if my_record.count()!=0:
+                my_record = Student.objects.get(id=request.user.id)
+                form = self.form_class(instance=my_record)
+                return render(request, self.template_name, {'form': form})
+            else:
+                return redirect('student:studentcreate')
         else:
             return redirect('student:index')
 
