@@ -236,6 +236,7 @@ class UpdateStudentSiteFormView(View):
     def get(self, request):
         if request.user.is_authenticated():
             my_record = StudentSite.objects.filter(user=request.user)
+            # print(my_record)
             for record in my_record:
                 if record.site.site_name == "github":
                     out = github(record.username).split(" ")
@@ -262,8 +263,12 @@ class UpdateStudentSiteFormView(View):
                     record.site_ques_solved = int(out[1])
                     record.site_point = float(out[2])
                     record.save()
-            s = "http://127.0.0.1:8000/studentportal/"+str(request.user.id)+"/"
-            return redirect(s)
+                # s = "http://127.0.0.1:8000/studentportal/"+str(request.user.id)+"/"
+                CurrentURL = get_current_site(request)
+                RedirectURL = 'http://' + str(CurrentURL) + '/studentportal/' + str(request.user.id) + "/"
+                # print(s)
+                # print(CurrentURL)
+                return redirect(RedirectURL)
         else:
             return redirect('student:index')
     
@@ -322,10 +327,12 @@ class StudentSiteFormView(View):
                     studentsite.site_point = float(out[2])
                    
                 studentsite.save()
-                s = "http://127.0.0.1:8000/studentportal/"+str(request.user.id)+"/"
-                return redirect(s)
+                # s = "http://127.0.0.1:8000/studentportal/"+str(request.user.id)+"/"
+                CurrentURL = get_current_site(request)
+                RedirectURL = 'http://' + str(CurrentURL) + '/studentportal/' + str(request.user.id) + "/"
+                return redirect(RedirectURL)
             else:
-                s = "http://127.0.0.1:8000/studentportal/"+str(request.user.id)+"/"
+                # s = "http://127.0.0.1:8000/studentportal/"+str(request.user.id)+"/"
                 return render(request,self.template_name,{'message': 'Username for for the site Already added','form':form})
 
         else:
