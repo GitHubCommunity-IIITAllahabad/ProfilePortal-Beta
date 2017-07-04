@@ -17,6 +17,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 import requests
 from bs4 import BeautifulSoup
+import string
+import random
 
 WorkingBaseURL = ' '
 
@@ -26,6 +28,9 @@ def RedirectSite(request):
     #print(RedirectURL)
     WorkingBaseURL = RedirectURL
     return redirect(RedirectURL)
+
+def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))
 
 def codechef(username):
     head = "https://wwww.codechef.com/users/"
@@ -155,7 +160,7 @@ class UserFormView(View):
 
             #cleaned (normalized) data
             username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
+            password = id_generator()
             user.set_password(password)
             user.save()
 
