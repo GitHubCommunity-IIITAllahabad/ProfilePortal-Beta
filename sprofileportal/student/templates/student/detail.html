@@ -2,7 +2,7 @@
 {% block title %}Details page{% endblock %}
 {% block body %}
 <div class="conatainer">
-		<div class="header">Profile</div>
+		<div class="header" style="padding-top:-20px;margin-top:-20px;">Profile</div>
 		<hr id="header_l"><br>
 </div>
 <div class="row">
@@ -16,6 +16,7 @@
 {% if request.user.id == student.user.id %}
 <h3><a href="{% url 'student:studentsite' %}">Add Site</a></h3>
 <h3><a href="{% url 'student:studentsiteupdate' %}">Update Site</a></h3>
+<h3><a href="{% url 'student:userpasswordchange' %}">Change Password</a></h3>
 {% else %}
 <br>
 {% endif %}
