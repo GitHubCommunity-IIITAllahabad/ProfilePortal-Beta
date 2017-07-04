@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.conf import settings
+from django.contrib import messages
+from django.core.mail import send_mail
 from django.shortcuts import render,redirect,render_to_response
 from django.shortcuts import get_object_or_404
 from django.contrib.sites.shortcuts import get_current_site
@@ -164,12 +167,14 @@ class UserFormView(View):
             user.set_password(password)
             user.save()
 
-            # returns User object if credentials are correct
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return redirect('http://127.0.0.1:8000/studentportal/register/studentcreate/')
+            #send_mail(subject, message, from_email, to_list, fail_silently=True)
+            subject = 'Thankyou for registering'
+            message = 'Welcome to IIITA profilePortal. Your password = ' + password  
+            from_email = settings.EMAIL_HOST_USER
+            to_list = [user.email,settings.EMAIL_HOST_USER]
+            send_mail(subject,message,from_email,to_list,fail_silently=True)
+            
+            return redirect('student:login')
 
         return render(request, self.template_name, {'form': form})
 
