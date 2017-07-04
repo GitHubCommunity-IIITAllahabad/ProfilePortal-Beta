@@ -6,7 +6,7 @@ from .models import Student, StudentSite, Site
 class UserForm(forms.ModelForm):   
     class Meta:
         model = User
-        fields = ['username','email','password']
+        fields = ['username','email']
 
 class StudentForm(forms.ModelForm):   
     class Meta:
