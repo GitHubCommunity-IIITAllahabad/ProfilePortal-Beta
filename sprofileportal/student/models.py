@@ -51,4 +51,4 @@ class StudentSite(models.Model):
     no_of_sites = models.IntegerField(default=None,null=True)
 
     def __str__(self):
-        return self.username + " - " + str(self.site)
+        return str(self.user) + " - " + str(self.site)
