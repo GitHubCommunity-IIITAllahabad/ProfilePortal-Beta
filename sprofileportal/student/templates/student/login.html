@@ -23,4 +23,9 @@
 		</div>
 	</div>
 </div>
+{% if passwordSent %}
+<script>
+    alert('{{ passwordSent }}');
+</script>
+{% endif %}
 {% endblock %}

@@ -177,7 +177,7 @@ class UserFormView(View):
             to_list = [user.email,settings.EMAIL_HOST_USER]
             send_mail(subject,message,from_email,to_list,fail_silently=True)
             
-            return redirect('student:login')
+            return render(request,self.template_name,{ 'passwordSent':'Password successfully sent to your email','form': form})
 
         return render(request, self.template_name, {'form': form})
 

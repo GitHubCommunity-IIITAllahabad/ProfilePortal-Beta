@@ -20,5 +20,11 @@
     	</ul>
 	{% else %}
    	         <h3>You don't have any student</h3>
+
 	{% endif %}
+{% if passwordSent %}
+<script>
+    alert('{{ passwordSent }}');
+</script>
+{% endif %}
 {% endblock %}
