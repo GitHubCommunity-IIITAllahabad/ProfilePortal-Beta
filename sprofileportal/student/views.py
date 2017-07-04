@@ -14,6 +14,9 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth import authenticate, login
 from django.views.generic import View
 from .forms import UserForm,StudentForm, StudentSiteForm
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth import logout
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
@@ -178,6 +181,31 @@ class UserFormView(View):
 
         return render(request, self.template_name, {'form': form})
 
+class UserPasswordChange(View):
+    
+    template_name = 'student/password_form.html'
+        
+    def get(self, request):
+        if request.user.is_authenticated():
+            form = PasswordChangeForm(request.user)
+            return render(request, self.template_name, {'form': form})
+        else:
+            return redirect('student:login')
+
+    def post(self, request):
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('student:index')
+        else:
+            messages.error(request, 'Please correct the error below.')
+         
+
+        return render(request, self.template_name, {'form': form})
+
+    
 class StudentCreate(CreateView):
     model = Student
     fields = '__all__'
