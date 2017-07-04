@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,render_to_response
 from django.shortcuts import get_object_or_404
 from django.contrib.sites.shortcuts import get_current_site
 from .models import Student, StudentSite, Site
@@ -18,10 +18,13 @@ from django.http import HttpResponseRedirect
 import requests
 from bs4 import BeautifulSoup
 
+WorkingBaseURL = ' '
+
 def RedirectSite(request):
     CurrentURL = get_current_site(request)
     RedirectURL = 'http://' + str(CurrentURL) + '/studentportal/'
     #print(RedirectURL)
+    WorkingBaseURL = RedirectURL
     return redirect(RedirectURL)
 
 def codechef(username):
@@ -317,10 +320,14 @@ class StudentSiteFormView(View):
                     studentsite.site_rank = int(out[0])
                     studentsite.site_ques_solved = int(out[1])
                     studentsite.site_point = float(out[2])
-                    
+                   
                 studentsite.save()
-            s = "http://127.0.0.1:8000/studentportal/"+str(request.user.id)+"/"
-            return redirect(s)
+                s = "http://127.0.0.1:8000/studentportal/"+str(request.user.id)+"/"
+                return redirect(s)
+            else:
+                s = "http://127.0.0.1:8000/studentportal/"+str(request.user.id)+"/"
+                return render(request,self.template_name,{'message': 'Username for for the site Already added','form':form})
+
         else:
             return render(request, self.template_name, {'form': form})
 

@@ -26,8 +26,9 @@ class Student(models.Model):
         return self.user
 
 class Site(models.Model):
-    site_name = models.CharField(max_length=200, default=None)
+    
     site_type = models.CharField(max_length=100, default=None)
+    site_name = models.CharField(max_length=200, default=None)
     site_active = models.BooleanField(default=False)
     site_count = models.IntegerField(default=0)
 
