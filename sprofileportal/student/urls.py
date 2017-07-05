@@ -35,6 +35,7 @@ urlpatterns = [
     url(r'^register/studentsiteupdate/$', views.UpdateStudentSiteFormView.as_view(), name='studentsiteupdate'),
     url(r'^passwordchange/$', views.UserPasswordChange.as_view(), name='userpasswordchange'),
     url(r'^register/studentsite/$', views.StudentSiteFormView.as_view(), name='studentsite'),
+    url(r'^githubrank/$', views.GithubRankView.as_view(), name='githubrank'),
     # /music/<album_id>/
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
     
