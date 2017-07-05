@@ -495,6 +495,52 @@ class StudentSiteFormView(View):
 
         return render(request, self.template_name, {'form': form})
 
+class GithubRankView(View):
+    
+    def get(self,request):
+        my_site=Site.objects.filter(site_name="github")
+        my_record = StudentSite.objects.filter(user=request.user)
+        for j in my_record:
+            if j.site.site_name=="github":
+                github = githubRank(j.username)
+                for i in github:
+                    record = i.split("-")
+                    my_lang = GithubRank.objects.filter(user=request.user).filter(language=record[0]).get(user=request.user)
+                    if my_lang:
+                        #my_lang=GithubRank.objects.get(id=my_lang.id)
+                        if record[1]=="0":
+                            #instance = GithubRank(user=request.user,language=record[0],world_rank=int(record[4]),world_total=int(record[5]),repos=int(record[7]),stars=int(record[9]))
+                            my_lang.world_rank = int(record[4])
+                            my_lang.world_total = int(record[5])
+                            my_lang.repos = int(record[7])
+                            my_lang.stars = int(record[9]) 
+                            my_lang.save()
+                        else:
+                            #instance = GithubRank(user=request.user,language=record[0],city=record[1],city_rank=int(record[2]),city_total=int(record[3]),country=record[4],country_rank=int(record[5]),country_total=int(record[6]),world_rank=int(record[8]),world_total=int(record[9]),repos=int(record[11]),stars=int(record[13]))
+                            my_lang.city_rank = int(record[2])
+                            my_lang.city_total = int(record[3])
+                            my_lang.country_rank = int(record[5])  
+                            my_lang.country_total = int(record[6])
+                            my_lang.world_rank = int(record[8])
+                            my_lang.world_total = int(record[9])
+                            my_lang.repos = int(record[11])
+                            my_lang.stars = int(record[13]) 
+                            my_lang.save()
+                    else:
+                        
+                        if record[1]=='0':
+                            
+                            instance = GithubRank(user=request.user,language=record[0],world_rank=int(record[4]),world_total=int(record[5]),repos=int(record[7]),stars=int(record[9]))
+                            instance.save()
+                        else:
+                            print(record[13])
+                            instance = GithubRank(user=request.user,language=record[0],city=record[1],city_rank=int(record[2]),city_total=int(record[3]),country=record[4],country_rank=int(record[5]),country_total=int(record[6]),world_rank=int(record[8]),world_total=int(record[9]),repos=int(record[11]),stars=int(record[13]))
+                            instance.save()
+                        
+        s = "http://127.0.0.1:8000/studentportal/"+str(request.user.id)+"/"
+        return redirect(s)
+
+    
 class RanksView(View):
 
     def get(self,request):
