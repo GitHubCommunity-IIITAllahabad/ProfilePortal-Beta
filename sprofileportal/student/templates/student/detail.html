@@ -30,7 +30,7 @@
 		<li role="presentation"><a href="#SPOJ" aria-controls="SPOJ" role="tab" data-toggle="tab">SPOJ</a></li>
 		<li role="presentation"><a href="#CODECHEF" aria-controls="CODECHEF" role="tab" data-toggle="tab">CODECHEF</a></li>
 		<li role="presentation"><a href="#CODEBUDDY" aria-controls="CODEBUDDY" role="tab" data-toggle="tab">CODEBUDDY</a></li>
-                <li role="presentation"><a href="#HACKEREARTH" aria-controls="HACKEREARTH" role="tab" data-toggle="tab">HACKEREARTH</a></li>
+                <li role="presentation"><a href="#CODEFORCES" aria-controls="CODEFORCES" role="tab" data-toggle="tab">CODEFORCES</a></li>
 		
 	  </ul>
 	  
@@ -120,7 +120,7 @@
 		                        <label>Username</label>: {{site.username}}<br>
 			                <label>World Rank</label>: {{site.site_rank}}<br>
                                         <label>Rating</label>: {{site.site_rating}}<br>
-			                <label>Question Solved</label>: {{site.site_ques_solved}}<br>
+			                <!-- <label>Question Solved</label>: {{site.site_ques_solved}}<br> -->
                                     {% endif %}
                                     {% endfor %}
                                 </div>
@@ -142,16 +142,13 @@
                         </div>
                 </div>
                 
-		<div role="tabpanel" class="tab-pane fade" id="HACKEREARTH">
+		<div role="tabpanel" class="tab-pane fade" id="CODEFORCES">
 			<div class="content">
 				<div class="container">
                                     {% for site in student.user.studentsite_set.all %}
-                                    {% if site.site.site_name == "hackerearth" %}
-		                        <label>
-			                  {{site.site}} -- 
-                                          {{site.username}}
-			
-		                        </label><br>
+                                    {% if site.site.site_name == "codeforces" %}
+		                        <label>Username</label>: {{site.username}}<br>
+                      <label>Rating</label>: {{site.site_rating}}<br>
                                     {% endif %}
                                     {% endfor %}
                                 </div>
