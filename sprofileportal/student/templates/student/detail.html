@@ -62,7 +62,35 @@
 		                        <br>
                                     {% endif %}
                                     {% endfor %}
+				<div class="row">
+                                    {% for site in student.user.githubrank_set.all %}
+                                    <div class="col-lg-4 col-md-4 col-sm-10 col-xs-10">
+                                          <div class="thumbnail" style="background-color:lightgray;padding-right:+10px;margin-right:+10px;"><center>
+                                                {% if site.city != None %}
+                                                <font color="white"><label><u>{{site.language}}</u></label></center><br></font>
+			                  	<label>{{site.city}} Rank</label>: {{site.city_rank}}/{{site.city_total}}<br>
+                                          	<label>{{site.country}} Rank</label>: {{site.country_rank}}/{{site.country_total}}<br>
+                                          	<label>World Rank</label>: {{site.world_rank}}<br>
+                                          	<label>Repositories</label>: {{site.repos}}<br>
+                                          	<label>Stars</label>: {{site.stars}}<br>
+                                                {% else %}
+                                                  <font color="white"><label><u>{{site.language}}</u></label></center><br></font>
+                                                  <label>World Rank</label>: {{site.world_rank}}<br>
+                                          	<label>Repositories</label>: {{site.repos}}<br>
+                                          	<label>Stars</label>: {{site.stars}}<br>
+                                                {% endif %}
+                                          </div>
+		                        <br>
+                                    </div>
+                                    {% endfor %}
+				    	{% if request.user.id == student.user.id %}
 
+					<h3><a href="{% url 'student:githubrank' %}">Add/Update Github Ranks based on languages</a></h3>
+					
+					{% else %}
+					<br>
+					{% endif %}
+                                </div>
                                 </div>
                         </div>
                 </div>
