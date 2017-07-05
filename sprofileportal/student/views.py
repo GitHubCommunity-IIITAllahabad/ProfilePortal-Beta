@@ -505,9 +505,9 @@ class GithubRankView(View):
                 github = githubRank(j.username)
                 for i in github:
                     record = i.split("-")
-                    my_lang = GithubRank.objects.filter(user=request.user).filter(language=record[0]).get(user=request.user)
+                    my_lang = GithubRank.objects.filter(user=request.user).filter(language=record[0])
                     if my_lang:
-                        #my_lang=GithubRank.objects.get(id=my_lang.id)
+                        my_lang = GithubRank.objects.filter(user=request.user).filter(language=record[0]).get(user=request.user)
                         if record[1]=="0":
                             #instance = GithubRank(user=request.user,language=record[0],world_rank=int(record[4]),world_total=int(record[5]),repos=int(record[7]),stars=int(record[9]))
                             my_lang.world_rank = int(record[4])
