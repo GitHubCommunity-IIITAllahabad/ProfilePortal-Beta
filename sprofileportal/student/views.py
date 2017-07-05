@@ -222,6 +222,29 @@ def codebuddy(username):
             return (output)
     return (-1)
 
+def codeforces(username):
+    head = 'http://codeforces.com/profile/'
+    var = username
+    URL = head + var
+    page = requests.get(URL)
+    soup = BeautifulSoup(page.content,'html.parser')
+
+    listRating = list(soup.findAll('div',class_="user-rank"))
+    CheckRating = listRating[0].get_text()  #Check for rated or unrated
+    if str(CheckRating) == '\nUnrated \n':
+        # print('Not rated')
+        out = 1000000
+        return(out)
+    else:
+    # print('rated')
+        listinfo = list((soup.find('div',class_="info")).findAll('li'))
+        string = (listinfo[0].get_text())
+        string = string.replace(" ","")
+        str1,str2 = string.split('(')   # Well,.. don't judge me
+        str3,str4 = str1.split(':') 
+        out = int((str4.strip()))
+        print(out)
+        return(out)
 
 temp_object_list=[]
 
@@ -418,6 +441,10 @@ class UpdateStudentSiteFormView(View):
                     record.site_ques_solved = int(out[1])
                     record.site_point = float(out[2])
                     record.save()
+                if record.site.site_name == 'codeforces':
+                    out = codeforces(record.username)
+                    record.site_rating = out
+                    record.save()
             # s = "http://127.0.0.1:8000/studentportal/"+str(request.user.id)+"/"
             CurrentURL = get_current_site(request)
             RedirectURL = 'http://' + str(CurrentURL) + '/studentportal/' + str(request.user.id) + "/"
@@ -480,6 +507,10 @@ class StudentSiteFormView(View):
                     studentsite.site_rank = int(out[0])
                     studentsite.site_ques_solved = int(out[1])
                     studentsite.site_point = float(out[2])
+                if site1 == 'codeforces':
+                    out = codeforces(form.cleaned_data['username'])
+                    print(out)
+                    studentsite.site_rating = out
                    
                 studentsite.save()
                 # s = "http://127.0.0.1:8000/studentportal/"+str(request.user.id)+"/"
@@ -548,7 +579,8 @@ class RanksView(View):
         spoj = StudentSite.objects.filter().order_by('-site_point')
         github = StudentSite.objects.filter().order_by('-site_contribution')
         codebuddy = StudentSite.objects.filter().order_by('-site_point')
-        context = {'codechef':codechef, 'spoj':spoj, 'github':github,'codebuddy':codebuddy}
+        codeforces = StudentSite.objects.filter().order_by('-site_rating')
+        context = {'codechef':codechef, 'spoj':spoj, 'github':github,'codebuddy':codebuddy,'codeforces':codeforces}
         return render(request,'student/ranks.html',context)
         
 
