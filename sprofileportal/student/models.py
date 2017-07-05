@@ -53,3 +53,20 @@ class StudentSite(models.Model):
 
     def __str__(self):
         return str(self.user) + " - " + str(self.site)
+    
+class GithubRank(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,default=None,null=True)
+    language = models.CharField(max_length=200, default=None,null=True)
+    city = models.CharField(max_length=200, default=None,null=True)
+    city_rank = models.IntegerField(default=None,null=True)
+    city_total = models.IntegerField(default=None,null=True)
+    country = models.CharField(max_length=200, default=None,null=True)
+    country_rank = models.IntegerField(default=None,null=True)
+    country_total = models.IntegerField(default=None,null=True)
+    world_rank = models.IntegerField(default=None,null=True)
+    world_total = models.IntegerField(default=None,null=True)
+    repos = models.IntegerField(default=None,null=True)
+    stars = models.IntegerField(default=None,null=True)
+
+    def __str__(self):
+        return self.language
