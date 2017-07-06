@@ -47,21 +47,17 @@ python manage.py runserver
 * Student Model which has a foreign key of User model and contains basic info of the user.
 * Site model contains all the sites that are available for scraping data.
 * StudentSite model contains a forignKey of User model and also of Site model. 
+* GithubRank model that contains various language work and ranking of users.
 
 ## Working of the app info
 * A user registers/logins he/she can fill a Student table form(only once) to enter his/her basic profile data which can be updated later.
 * Then a user can see his/her profile, see their records from different websites, add a new website details, update the details of the filled websites just with a click.
 * User can search for other users by voice-recognition feature using their roll-no.
 * Also there is a ranking page where users are ranked according to criterias set for the different sites.
+* See the language wise work done and ranking for github users.
 
 ## To-Do
-* Come up with the critetion to filter out the top performers in the respective fields.
-* Implement it.
 * Start improving the frontend design.
 * Collection of the data from the students and creating the actual database.
 * Rigorous testing of the website.
 
-## To-Do Frontend Design
-* use django templates
-* make it responsive for mobile applications
-* mainly use bootstrap for the designing
