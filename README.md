@@ -3,12 +3,12 @@
 
 # Profile-Portal
 * Automatic profile portal for the members of an organisation.
-* The portal is intended for IT/CS based orgs. where the data is grabbed from common websites like SPOJ, Codechef, GitHub, etc. and displayed in a consolidated form.
+* The portal is intended for IT/CS based orgs. where the data is grabbed from common websites like SPOJ, Codechef, GitHub, Codeforces, Codebuddy etc. and displayed in a consolidated form.
 
 ## How does it work ?
 * The details of every member of the organisation is stored in the data base(sqlite3 here).
-* The details include the CP profiles and Codechef,Hackerrank,Hackerearth,SPOJ and also social coding platforms like Github and Behance
-* A python script scrapes the data from the profiles and displays it in the portal.
+* The details include the CP profiles and Codechef,Hackerearth,SPOJ, Codebuddy, Codeforces and also social coding platforms like Github and Behance
+* Python scripts scrapes the data from the profiles and displays it in the portal.
 * Flexibility : Any user can view the profile of another using the unique ID (Roll no.)
 
 ## Building on your machine
