@@ -50,7 +50,7 @@
                                          <font color="black">
                                          {% endif %}
                                          <div class="row"><center>
-                                        <li> <div class="col-lg-3 col-md-3">{{site.username}}</div><div class="col-lg-3 col-md-3">{% for student in student %}{% if student.user == site.user%}{{student.enrollment_no}}{% endif %}{% endfor %}</div><div class="col-lg-3 col-md-3">{{site.site_contribution}}</div><div class="col-lg-3 col-md-3">{{site.site_repo}}</div>
+                                        <li> <div class="col-lg-3 col-md-3">{{site.username}}</div><div class="col-lg-3 col-md-3">{% for student in site.user.student_set.all %}{% if student.user == site.user %}{{student.enrollment_no}}{% endif %}{% endfor %}</div><div class="col-lg-3 col-md-3">{{site.site_contribution}}</div><div class="col-lg-3 col-md-3">{{site.site_repo}}</div>
                                     </li></center></div> 
                                           
                                          </font>
@@ -78,7 +78,7 @@
                                          <font color="black">
                                          {% endif %}
                                          <div class="row"><center>
-                                        <li> <div class="col-lg-3 col-md-3">{{site.username}}</div><div class="col-lg-3 col-md-3">{% for student in student %}{% if student.user == site.user%}{{student.enrollment_no}}{% endif %}{% endfor %}</div><div class="col-lg-3 col-md-3">{{site.site_point}}</div><div class="col-lg-3 col-md-3">{{site.site_rank}}</div>
+                                        <li> <div class="col-lg-3 col-md-3">{{site.username}}</div><div class="col-lg-3 col-md-3">{% for student in site.user.student_set.all %}{% if student.user == site.user %}{{student.enrollment_no}}{% endif %}{% endfor %}</div><div class="col-lg-3 col-md-3">{{site.site_point}}</div><div class="col-lg-3 col-md-3">{{site.site_rank}}</div>
                                     </li></center></div>
                                     	 </font>
 				    {% endif %}
@@ -105,7 +105,7 @@
                                          <font color="black">
                                          {% endif %}
                                          <div class="row"><center>
-                                        <li> <div class="col-lg-3 col-md-3">{{site.username}}</div><div class="col-lg-3 col-md-3">{% for student in student %}{% if student.user == site.user%}{{student.enrollment_no}}{% endif %}{% endfor %}</div><div class="col-lg-3 col-md-3">{{site.site_rating}}</div><div class="col-lg-3 col-md-3">{{site.site_rank}}</div>
+                                        <li> <div class="col-lg-3 col-md-3">{{site.username}}</div><div class="col-lg-3 col-md-3">{% for student in site.user.student_set.all %}{% if student.user == site.user %}{{student.enrollment_no}}{% endif %}{% endfor %}</div><div class="col-lg-3 col-md-3">{{site.site_rating}}</div><div class="col-lg-3 col-md-3">{{site.site_rank}}</div>
                                         </li></center></div>
                                             
                                          </font>
@@ -132,7 +132,7 @@
                                          <font color="black">
                                          {% endif %}
                                          <div class="row"><center>
-                                        <li> <div class="col-lg-3 col-md-3">{{site.username}}</div><div class="col-lg-3 col-md-3">{% for student in student %}{% if student.user == site.user%}{{student.enrollment_no}}{% endif %}{% endfor %}</div><div class="col-lg-3 col-md-3">{{site.site_point}}</div><div class="col-lg-3 col-md-3">{{site.site_rank}}</div>
+                                        <li> <div class="col-lg-3 col-md-3">{{site.username}}</div><div class="col-lg-3 col-md-3">{% for student in site.user.student_set.all %}{% if student.user == site.user %}{{student.enrollment_no}}{% endif %}{% endfor %}</div><div class="col-lg-3 col-md-3">{{site.site_point}}</div><div class="col-lg-3 col-md-3">{{site.site_rank}}</div>
                                     </li></center></div>
                                          </font>
                                     {% endif %}
