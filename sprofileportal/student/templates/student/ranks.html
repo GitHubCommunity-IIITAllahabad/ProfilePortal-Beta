@@ -16,6 +16,7 @@
 		<li role="presentation"><a href="#SPOJ" aria-controls="SPOJ" role="tab" data-toggle="tab">SPOJ</a></li>
 		<li role="presentation"><a href="#CODECHEF" aria-controls="CODECHEF" role="tab" data-toggle="tab">CODECHEF</a></li>
 		<li role="presentation"><a href="#CODEBUDDY" aria-controls="CODEBUDDY" role="tab" data-toggle="tab">CODEBUDDY</a></li>
+                <li role="presentation"><a href="#CODEFORCES" aria-controls="CODEFORCES" role="tab" data-toggle="tab">CODEFORCES</a></li>
 		<li role="presentation"><a href="#HACKEREARTH" aria-controls="HACKEREARTH" role="tab" data-toggle="tab">HACKEREARTH</a></li>
 		
 	  </ul>
@@ -143,6 +144,32 @@
                         </div>
                 </div>
 		
+                <div role="tabpanel" class="tab-pane fade" id="CODEFORCES">
+			<div class="content">
+				<div class="container">
+                                    <div class="row"><center>
+                                        <div class="col-lg-3 col-md-3">Username</div><div class="col-lg-3 col-md-3">Enrollment No</div><div class="col-lg-3 col-md-3">Rating</div>
+                                    </center></div>
+                                    <ol type="1">
+				    {% for site in codeforces %}
+                                    {% if site.site.site_name == "codeforces" %}
+                                         {% if request.user == site.user %}
+                                         <font color="yellow">
+                                         {% else %}
+                                         <font color="black">
+                                         {% endif %}
+                                         <div class="row"><center>
+                                        <li> <div class="col-lg-3 col-md-3">{{site.username}}</div><div class="col-lg-3 col-md-3">{% for student in site.user.student_set.all %}{% if student.user == site.user %}{{student.enrollment_no}}{% endif %}{% endfor %}</div><div class="col-lg-3 col-md-3">{{site.site_rating}}</div>
+                                    </li></center></div>
+                                         </font>
+                                    {% endif %}
+                                    {% endfor %}
+                                      
+				    </ol>
+                                </div>
+                        </div>
+                </div>
+                   
 		<div role="tabpanel" class="tab-pane fade" id="HACKEREARTH">
 			<div class="content">
 				<div class="container">
