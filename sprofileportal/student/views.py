@@ -572,7 +572,7 @@ class GithubRankView(View):
         return redirect(s)
 
     
-class RanksView(View):
+cclass RanksView(View):
 
     def get(self,request):
         codechef = StudentSite.objects.filter().order_by('-site_rating')
@@ -580,7 +580,16 @@ class RanksView(View):
         github = StudentSite.objects.filter().order_by('-site_contribution')
         codebuddy = StudentSite.objects.filter().order_by('-site_point')
         codeforces = StudentSite.objects.filter().order_by('-site_rating')
-        context = {'codechef':codechef, 'spoj':spoj, 'github':github,'codebuddy':codebuddy,'codeforces':codeforces}
+        javascript = GithubRank.objects.filter(language="javascript").order_by('world_rank')
+        c = GithubRank.objects.filter(language="c").order_by('world_rank')
+        cpp = GithubRank.objects.filter(language="c++").order_by('world_rank')
+        php = GithubRank.objects.filter(language="php").order_by('world_rank')
+        python = GithubRank.objects.filter(language="python").order_by('world_rank')
+        html = GithubRank.objects.filter(language="html").order_by('world_rank')
+        css = GithubRank.objects.filter(language="css").order_by('world_rank')
+        processing = GithubRank.objects.filter(language="processing").order_by('world_rank')
+
+        context = {'codechef':codechef, 'spoj':spoj, 'github':github,'codebuddy':codebuddy,'codeforces':codeforces,'javascript':javascript,'c':c,'cpp':cpp,'php':php,'python':python,'html':html,'css':css,'processing':processing}
         return render(request,'student/ranks.html',context)
         
 
