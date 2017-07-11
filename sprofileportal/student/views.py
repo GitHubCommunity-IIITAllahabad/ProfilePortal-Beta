@@ -572,7 +572,7 @@ class GithubRankView(View):
         return redirect(s)
 
     
-cclass RanksView(View):
+class RanksView(View):
 
     def get(self,request):
         codechef = StudentSite.objects.filter().order_by('-site_rating')
