@@ -57,8 +57,208 @@
                                          </font>
                                     {% endif %}
                                     {% endfor %}
+									
                                       
 				    </ol>
+					<br>
+					<div class="row">
+                                    
+                                    <div class="col-lg-4 col-md-4 col-sm-10 col-xs-10">
+									<div class="thumbnail"><center>
+									<h3>javascript</h3>
+                                        <ol type="1">
+										{% for git in javascript %}
+                                    
+                                         {% if request.user == git.user %}
+                                         <font color="yellow">
+                                         {% else %}
+                                         <font color="black">
+                                         {% endif %}
+                                        
+                                        <li> {{git.user.username}}
+                                    </li>
+                                          
+                                         </font>
+                                    
+                                    {% endfor %}
+									
+                                      
+										</ol>
+										</center></div>
+                                    </div>
+									
+									<div class="col-lg-4 col-md-4 col-sm-10 col-xs-10">
+									<div class="thumbnail"><center>
+									<h3>C</h3>
+                                        <ol type="1">
+										{% for git in c%}
+                                    
+                                         {% if request.user == git.user %}
+                                         <font color="yellow">
+                                         {% else %}
+                                         <font color="black">
+                                         {% endif %}
+                                        
+                                        <li> {{git.user.username}}
+                                    </li> 
+                                          
+                                         </font>
+                                    
+                                    {% endfor %}
+									
+                                      
+										</ol>
+										</center></div>
+                                    </div>
+									
+									<div class="col-lg-4 col-md-4 col-sm-10 col-xs-10">
+									<div class="thumbnail"><center>
+									<h3>C++</h3>
+                                        <ol type="1">
+										{% for git in cpp%}
+                                    
+                                         {% if request.user == git.user %}
+                                         <font color="yellow">
+                                         {% else %}
+                                         <font color="black">
+                                         {% endif %}
+                                       
+                                        <li> {{git.user.username}}
+                                    </li></center> 
+                                          
+                                         </font>
+                                    
+                                    {% endfor %}
+									
+                                      
+										</ol>
+										</div>
+                                    </div>
+								</div>
+								<div class="row">
+									<div class="col-lg-4 col-md-4 col-sm-10 col-xs-10">
+									<div class="thumbnail"><center>
+									<h3>Python</h3>
+                                        <ol type="1">
+										{% for git in python%}
+                                    
+                                         {% if request.user == git.user %}
+                                         <font color="yellow">
+                                         {% else %}
+                                         <font color="black">
+                                         {% endif %}
+                                         
+                                        <li> {{git.user.username}}
+                                    </li>
+                                          
+                                         </font>
+                                    
+                                    {% endfor %}
+									
+                                      
+										</ol>
+										</center></div>
+                                    </div>
+									
+									<div class="col-lg-4 col-md-4 col-sm-10 col-xs-10">
+									<div class="thumbnail"><center>
+									<h3>html</h3>
+                                        <ol type="1">
+										{% for git in html%}
+                                    
+                                         {% if request.user == git.user %}
+                                         <font color="yellow">
+                                         {% else %}
+                                         <font color="black">
+                                         {% endif %}
+                                        
+                                        <li> {{git.user.username}}
+                                    </li> 
+                                          
+                                         </font>
+                                    
+                                    {% endfor %}
+									
+                                      
+										</ol>
+										</center></div>
+                                    </div>
+									
+									<div class="col-lg-4 col-md-4 col-sm-10 col-xs-10">
+									<div class="thumbnail"><center>
+									<h3>Css</h3>
+                                        <ol type="1">
+										{% for git in css%}
+                                    
+                                         {% if request.user == git.user %}
+                                         <font color="yellow">
+                                         {% else %}
+                                         <font color="black">
+                                         {% endif %}
+                                         
+                                        <li> {{git.user.username}}
+                                    </li> 
+                                          
+                                         </font>
+                                    
+                                    {% endfor %}
+									
+                                      
+										</ol>
+										</center></div>
+                                    </div>
+								</div>
+								<div class="row">
+									<div class="col-lg-4 col-md-4 col-sm-10 col-xs-10">
+									<div class="thumbnail"><center>
+									<h3>processing</h3>
+                                        <ol type="1">
+										{% for git in processing%}
+                                    
+                                         {% if request.user == git.user %}
+                                         <font color="yellow">
+                                         {% else %}
+                                         <font color="black">
+                                         {% endif %}
+                                         
+                                        <li> {{git.user.username}}
+                                    </li> 
+                                          
+                                         </font>
+                                    
+                                    {% endfor %}
+									
+                                      
+										</ol>
+										</center></div>
+                                    </div>
+									
+									<div class="col-lg-4 col-md-4 col-sm-10 col-xs-10">
+									<div class="thumbnail"><center>
+									<h3>php</h3>
+                                        <ol type="1">
+										{% for git in php%}
+                                    
+                                         {% if request.user == git.user %}
+                                         <font color="yellow">
+                                         {% else %}
+                                         <font color="black">
+                                         {% endif %}
+                                         
+                                        <li> {{git.user.username}}
+                                    </li> 
+                                          
+                                         </font>
+                                    
+                                    {% endfor %}
+									
+                                      
+										</ol>
+										</center></div>
+                                    </div>
+									
+					</div>
+					
                                 </div>
                         </div>
                 </div>
