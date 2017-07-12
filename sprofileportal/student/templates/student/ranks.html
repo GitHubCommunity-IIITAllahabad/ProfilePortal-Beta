@@ -256,7 +256,30 @@
 										</ol>
 										</center></div>
                                     </div>
+						<div class="col-lg-4 col-md-4 col-sm-10 col-xs-10">
+									<div class="thumbnail"><center>
+									<h3>Ruby</h3>
+                                        <ol type="1">
+										{% for git in ruby%}
+                                    
+                                         {% if request.user == git.user %}
+                                         <font color="yellow">
+                                         {% else %}
+                                         <font color="black">
+                                         {% endif %}
+                                         
+                                        <li> {{git.user.username}}
+                                    </li> 
+                                          
+                                         </font>
+                                    
+                                    {% endfor %}
 									
+                                      
+										</ol>
+										</center></div>
+                                    </div>
+							
 					</div>
 					
                                 </div>
