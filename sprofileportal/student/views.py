@@ -588,8 +588,9 @@ class RanksView(View):
         html = GithubRank.objects.filter(language="html").order_by('world_rank')
         css = GithubRank.objects.filter(language="css").order_by('world_rank')
         processing = GithubRank.objects.filter(language="processing").order_by('world_rank')
+        ruby = GithubRank.objects.filter(language="ruby").order_by('world_rank')
 
-        context = {'codechef':codechef, 'spoj':spoj, 'github':github,'codebuddy':codebuddy,'codeforces':codeforces,'javascript':javascript,'c':c,'cpp':cpp,'php':php,'python':python,'html':html,'css':css,'processing':processing}
+        context = {'codechef':codechef, 'spoj':spoj, 'github':github,'codebuddy':codebuddy,'codeforces':codeforces,'javascript':javascript,'c':c,'cpp':cpp,'php':php,'python':python,'html':html,'css':css,'processing':processing,'ruby':ruby}
         return render(request,'student/ranks.html',context)
         
 
