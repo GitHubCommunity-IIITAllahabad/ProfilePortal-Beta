@@ -3,8 +3,9 @@
 {% block body %}
 	{% if object_list %}
     	
-    	<ul>
-		<div class="row">
+    	<!-- <ul> -->
+		<!-- <div class="row">
+
 		    {% for student in object_list %}
 			
 						<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><center>
@@ -16,8 +17,28 @@
 						
 			
 		    {% endfor %}
-		</div>
-    	</ul>
+		</div> -->
+    	<!-- </ul> -->
+    	<table class="table-fill">
+    	<thead >
+    		<tr>
+    			<th class="text-center">RollNo.</th>
+    			<th class="text-center">Name</th>
+    		</tr>
+    	</thead>
+    	<tbody class="table-hover">
+    		{% for student in object_list %}
+    		<tr>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
+
+    		</tr>
+
+    		{% endfor %}
+    	</tbody>
+
+    	</table>	
+
 	{% else %}
    	         <h3>You don't have any student</h3>
 
