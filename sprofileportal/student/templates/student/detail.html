@@ -50,7 +50,7 @@
           
 		<div role="tabpanel" class="tab-pane fade" id="GITHUB">
 			<div class="content">
-				<div class="container">
+				<div class="thumbnail" style="width:50%;background-color:palegreen">
 				    {% for site in student.user.studentsite_set.all %}
                                     {% if site.site.site_name == "github" %}
                                           <label>Username</label>: {{site.username}}<br>
@@ -62,6 +62,7 @@
 		                        <br>
                                     {% endif %}
                                     {% endfor %}
+				</div>
 				<div class="row">
                                     {% for site in student.user.githubrank_set.all %}
                                     <div class="col-lg-4 col-md-4 col-sm-10 col-xs-10">
@@ -92,13 +93,13 @@
 					{% endif %}
                                 </div>
                                 </div>
-                        </div>
+                       
                 </div>
           
           
 		<div role="tabpanel" class="tab-pane fade" id="SPOJ">
 			<div class="content">
-				<div class="container">
+				<div class="thumbnail" style="width:50%;background-color:palegreen">
                                     {% for site in student.user.studentsite_set.all %}
                                     {% if site.site.site_name == "spoj" %}
 		                        <label>Username</label>: {{site.username}}<br>
@@ -114,7 +115,7 @@
          
 		<div role="tabpanel" class="tab-pane fade" id="CODECHEF">
 			<div class="content">
-				<div class="container">
+				<div class="thumbnail" style="width:50%;background-color:palegreen">
                                     {% for site in student.user.studentsite_set.all %}
                                     {% if site.site.site_name == "codechef" %}
 		                        <label>Username</label>: {{site.username}}<br>
@@ -129,7 +130,7 @@
                 
                 <div role="tabpanel" class="tab-pane fade" id="CODEBUDDY">
 			<div class="content">
-				<div class="container">
+				<div class="thumbnail" style="width:50%;background-color:palegreen">
                                     {% for site in student.user.studentsite_set.all %}
                                     {% if site.site.site_name == "codebuddy" %}
 		                        <label>Username</label>: {{site.username}}<br>
@@ -144,7 +145,7 @@
                 
 		<div role="tabpanel" class="tab-pane fade" id="CODEFORCES">
 			<div class="content">
-				<div class="container">
+				<div class="thumbnail" style="width:50%;background-color:palegreen">
                                     {% for site in student.user.studentsite_set.all %}
                                     {% if site.site.site_name == "codeforces" %}
 		                        <label>Username</label>: {{site.username}}<br>
