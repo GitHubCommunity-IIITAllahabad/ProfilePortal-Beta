@@ -255,17 +255,42 @@ temp_object_list=[]
 #        temp_object_list = Student.object.filter(Q(enrollment_no__icontains=query)).order_by('enrollment_no')
 #        return render(request,'student/base.html',{})
 
-class IndexView(generic.ListView):
+#class IndexView(generic.ListView):
+#    template_name = 'student/index.html'
+#    def get_queryset(self):
+#        #query = request.GET.get("q")
+#        object_list =  Student.objects.filter().order_by('enrollment_no')
+#        query = self.request.GET.get("q")
+#        if query:
+#           #print('a') 
+#           temp_object_list = object_list.filter(Q(enrollment_no__icontains=query)).order_by('enrollment_no')
+#           object_list = temp_object_list
+#        return object_list
+
+class IndexView(View):
     template_name = 'student/index.html'
-    def get_queryset(self):
+    def get(self,request):
         #query = request.GET.get("q")
-        object_list =  Student.objects.filter().order_by('enrollment_no')
+        sem1 =  Student.objects.filter(current_semester=1).order_by('enrollment_no')
+        sem2 =  Student.objects.filter(current_semester=2).order_by('enrollment_no')
+        sem3 =  Student.objects.filter(current_semester=3).order_by('enrollment_no')
+        sem4 =  Student.objects.filter(current_semester=4).order_by('enrollment_no')
+        sem5 =  Student.objects.filter(current_semester=5).order_by('enrollment_no')
+        sem6 =  Student.objects.filter(current_semester=6).order_by('enrollment_no')
+        sem7 =  Student.objects.filter(current_semester=7).order_by('enrollment_no')
+        sem8 =  Student.objects.filter(current_semester=8).order_by('enrollment_no')
+        sem9 =  Student.objects.filter(current_semester=9).order_by('enrollment_no')
+        sem10 =  Student.objects.filter(current_semester=10).order_by('enrollment_no')
+        
+        object_list = []
         query = self.request.GET.get("q")
         if query:
            #print('a') 
-           temp_object_list = object_list.filter(Q(enrollment_no__icontains=query)).order_by('enrollment_no')
+           temp_object_list = Student.objects.filter(Q(enrollment_no__icontains=query)).order_by('enrollment_no')
            object_list = temp_object_list
-        return object_list
+
+        context = {'object_list':object_list,'sem1':sem1,'sem2':sem2,'sem3':sem3,'sem4':sem4,'sem5':sem5,'sem6':sem6,'sem7':sem7,'sem8':sem8,'sem9':sem9,'sem10':sem10}
+        return render(request,'student/index.html',context)
 
 class DetailView(generic.DetailView):
     model = Student
