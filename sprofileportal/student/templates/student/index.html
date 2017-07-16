@@ -1,6 +1,7 @@
 {% extends 'student/base.html' %}
 
 {% block body %}
+	{% if object_list or sem1 or sem2 or sem3 or sem4 or sem5 or sem6 or sem7 or sem8 or sem9 or sem10 %}
 	{% if object_list %}
     	
     	<!-- <ul> -->
@@ -38,6 +39,228 @@
     	</tbody>
 
     	</table>	
+	{% else %}
+	{% if sem1 %}
+		<div class="jumbotron"><center><label><font size='5'>Semester - 1</font></label></center></div> 
+		<table class="table-fill">
+    	<thead >
+    		<tr>
+    			<th class="text-center">RollNo.</th>
+    			<th class="text-center">Name</th>
+    		</tr>
+    	</thead>
+    	<tbody class="table-hover">
+    		{% for student in sem1 %}
+    		<tr>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
+
+    		</tr>
+
+    		{% endfor %}
+    	</tbody>
+
+    	</table>	
+	{% endif %}
+	{% if sem2 %}
+		<div class="jumbotron"><center><label><font size='5'>Semester - 2</font></label></center></div> 
+		<table class="table-fill">
+    	<thead >
+    		<tr>
+    			<th class="text-center">RollNo.</th>
+    			<th class="text-center">Name</th>
+    		</tr>
+    	</thead>
+    	<tbody class="table-hover">
+    		{% for student in sem2 %}
+    		<tr>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
+
+    		</tr>
+
+    		{% endfor %}
+    	</tbody>
+
+    	</table>
+	{% endif %}
+	{% if sem3 %}
+		<div class="jumbotron"><center><label><font size='5'>Semester - 3</font></label></center></div> 
+		<table class="table-fill">
+    	<thead >
+    		<tr>
+    			<th class="text-center">RollNo.</th>
+    			<th class="text-center">Name</th>
+    		</tr>
+    	</thead>
+    	<tbody class="table-hover">
+    		{% for student in sem3 %}
+    		<tr>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
+
+    		</tr>
+
+    		{% endfor %}
+    	</tbody>
+
+    	</table>
+	{% endif %}
+	{% if sem4 %}
+		<div class="jumbotron"><center><label><font size='5'>Semester - 4</font></label></center></div> 
+		<table class="table-fill">
+    	<thead >
+    		<tr>
+    			<th class="text-center">RollNo.</th>
+    			<th class="text-center">Name</th>
+    		</tr>
+    	</thead>
+    	<tbody class="table-hover">
+    		{% for student in sem4 %}
+    		<tr>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
+
+    		</tr>
+
+    		{% endfor %}
+    	</tbody>
+
+    	</table>
+	
+	{% elif sem5 %}
+		<div class="jumbotron"><center><label><font size='5'>Semester - 5</font></label></center></div> 
+		<table class="table-fill">
+    	<thead >
+    		<tr>
+    			<th class="text-center">RollNo.</th>
+    			<th class="text-center">Name</th>
+    		</tr>
+    	</thead>
+    	<tbody class="table-hover">
+    		{% for student in sem5 %}
+    		<tr>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
+
+    		</tr>
+
+    		{% endfor %}
+    	</tbody>
+
+    	</table>
+	{% endif %}
+	{% if sem6 %}
+		<div class="jumbotron"><center><label><font size='5'>Semester - 6</font></label></center></div> 
+		<table class="table-fill">
+    	<thead >
+    		<tr>
+    			<th class="text-center">RollNo.</th>
+    			<th class="text-center">Name</th>
+    		</tr>
+    	</thead>
+    	<tbody class="table-hover">
+    		{% for student in sem6 %}
+    		<tr>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
+
+    		</tr>
+
+    		{% endfor %}
+    	</tbody>
+
+    	</table>
+	{% endif %}
+	{% if sem7 %}
+		<div class="jumbotron"><center><label><font size='5'>Semester - 7</font></label></center></div> 
+		<table class="table-fill">
+    	<thead >
+    		<tr>
+    			<th class="text-center">RollNo.</th>
+    			<th class="text-center">Name</th>
+    		</tr>
+    	</thead>
+    	<tbody class="table-hover">
+    		{% for student in sem7 %}
+    		<tr>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
+
+    		</tr>
+
+    		{% endfor %}
+    	</tbody>
+
+    	</table>
+	{% endif %}
+	{% if sem8 %}
+		<div class="jumbotron"><center><label><font size='5'>Semester - 8</font></label></center></div> 
+		<table class="table-fill">
+    	<thead >
+    		<tr>
+    			<th class="text-center">RollNo.</th>
+    			<th class="text-center">Name</th>
+    		</tr>
+    	</thead>
+    	<tbody class="table-hover">
+    		{% for student in sem8 %}
+    		<tr>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
+
+    		</tr>
+
+    		{% endfor %}
+    	</tbody>
+
+    	</table>
+	{% endif %}
+	{% if sem9 %}
+		<div class="jumbotron"><center><label><font size='5'>Semester - 9</font></label></center></div> 
+		<table class="table-fill">
+    	<thead >
+    		<tr>
+    			<th class="text-center">RollNo.</th>
+    			<th class="text-center">Name</th>
+    		</tr>
+    	</thead>
+    	<tbody class="table-hover">
+    		{% for student in sem9 %}
+    		<tr>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
+
+    		</tr>
+
+    		{% endfor %}
+    	</tbody>
+
+    	</table>
+	{% endif %}	
+	{% if sem10 %}
+		<div class="jumbotron"><center><label><font size='5'>Semester - 10</font></label></center></div> 
+		<table class="table-fill">
+    	<thead >
+    		<tr>
+    			<th class="text-center">RollNo.</th>
+    			<th class="text-center">Name</th>
+    		</tr>
+    	</thead>
+    	<tbody class="table-hover">
+    		{% for student in sem10 %}
+    		<tr>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
+    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
+
+    		</tr>
+
+    		{% endfor %}
+    	</tbody>
+
+    	</table>
+	{% endif %}
+	{% endif %}
 
 	{% else %}
    	         <h3>You don't have any student</h3>
