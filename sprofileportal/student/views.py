@@ -418,16 +418,16 @@ class StudentCreate(CreateView):
 class StudentFormView(View):
     
     form_class = StudentForm
-    template_name = 'student/registration_form.html'
+    template_name = 'student/studentcreate.html'
         
     def get(self, request):
         if request.user.is_authenticated():
             my_record = Student.objects.filter(id=request.user.id).count()
-            if my_record!=0:
-                return redirect('student:index')
-            else:
-                form = self.form_class(None)
-                return render(request, self.template_name, {'form': form})
+            # if my_record!=0:
+            #     return redirect('student:index')
+            # else:
+            form = self.form_class(None)
+            return render(request, self.template_name, {'form': form})
         else:
             return redirect('student:index')
 
@@ -451,7 +451,7 @@ class StudentFormView(View):
 class UpdateStudentFormView(View):
     
     form_class = StudentForm
-    template_name = 'student/registration_form.html'
+    template_name = 'student/studentupdate.html'
         
     def get(self, request):
         if request.user.is_authenticated():
@@ -528,7 +528,7 @@ class UpdateStudentSiteFormView(View):
 class StudentSiteFormView(View):
     
     form_class = StudentSiteForm
-    template_name = 'student/registration_form.html'
+    template_name = 'student/addsite.html'
         
     def get(self, request):
         if request.user.is_authenticated():

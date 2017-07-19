@@ -9,13 +9,14 @@
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
 	<link rel="stylesheet" type="text/css" href="{% static 'student/style.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'student/tables.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'student/custom.css' %}" />
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
         <script type="text/javascript" src="{% static 'student/voice.js' %}"></script>
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" style="font-family:monosapce;color: #55acee">
     <div class="container-fluid">
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
@@ -110,9 +111,9 @@
     </div>
 </nav>
 {% if not user.username %}
-<h3 style ="text-align: center">User Not logged in. Please log in to Add or Edit your credentials</h3>
+<h3 style ="text-align: center;color: #55acee;font-family:monospace;" >User Not logged in. Please log in to Add or Edit your credentials</h3>
 {% else %}
-<h3 style ="text-align: center">Welcome {{user.username}}</h3>
+<h3 style ="text-align: center;color: #55acee;font-family:monospace;">Welcome {{user.username}}</h3>
 {% endif %}
 {% block body %}
 {% endblock %}
