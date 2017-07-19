@@ -18,3 +18,9 @@ class StudentSiteForm(forms.ModelForm):
     class Meta:
         model = StudentSite
         fields = ['site','username','is_active']
+
+
+class ForgetPasswordForm(forms.Form):   
+    username = forms.CharField()
+    email = forms.EmailField()
+    fields = ['username','email']
