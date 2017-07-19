@@ -13,7 +13,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth import authenticate, login
 from django.views.generic import View
-from .forms import UserForm,StudentForm, StudentSiteForm
+from .forms import UserForm,StudentForm, StudentSiteForm, ForgetPasswordForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
@@ -364,6 +364,51 @@ class UserPasswordChange(View):
 
         return render(request, self.template_name, {'form': form})
 
+class ForgetPassword(View):
+    
+    template_name = 'student/forget_password_form.html'
+        
+    def get(self, request):
+        if request.user.is_authenticated(): 
+            return redirect('student:index')
+        else:
+            form = ForgetPasswordForm(request.GET)
+            return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = ForgetPasswordForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
+            
+            usercount = User.objects.filter(username=username).count()
+            if usercount==1:
+                user = User.objects.get(username=username)
+                if user.email==email:
+                    password = id_generator()
+                    user.set_password(password)
+                    user.save()
+
+                    #send_mail(subject, message, from_email, to_list, fail_silently=True)
+                    subject = 'Password change'
+                    message = 'You forgot your passwordso we are sending new password. Change this password once you log in. Your username = ' + username + ' Your new password = ' + password  
+                    from_email = settings.EMAIL_HOST_USER
+                    to_list = [user.email,settings.EMAIL_HOST_USER]
+                    send_mail(subject,message,from_email,to_list,fail_silently=True)
+
+                    messages.success(request, 'Your password was successfully sent!')
+                    return redirect('student:index')
+                else:
+                    return render(request, self.template_name, {'form': form})
+            else:
+                messages.error(request, 'no such user exist')
+                return render(request, self.template_name, {'form': form})
+                
+        else:
+            messages.error(request, 'Please correct the error below.')
+         
+
+        return render(request, self.template_name, {'form': form})
     
 class StudentCreate(CreateView):
     model = Student
