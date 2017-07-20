@@ -38,6 +38,7 @@
   background: #55acee;
   width: 100%;
   border: 0;
+  
   padding: 15px;
   color: #FFFFFF;
   font-size: 14px;
@@ -46,6 +47,7 @@
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
   background: #55acee;
 }
 .form .message {
