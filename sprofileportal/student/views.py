@@ -423,11 +423,11 @@ class StudentFormView(View):
     def get(self, request):
         if request.user.is_authenticated():
             my_record = Student.objects.filter(id=request.user.id).count()
-            # if my_record!=0:
-            #     return redirect('student:index')
-            # else:
-            form = self.form_class(None)
-            return render(request, self.template_name, {'form': form})
+            if my_record!=0:
+                return redirect('student:index')
+            else:
+                form = self.form_class(None)
+                return render(request, self.template_name, {'form': form})
         else:
             return redirect('student:index')
 
