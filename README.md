@@ -17,23 +17,17 @@
 ```
 git clone https://github.com/RavicharanN/proj-profilePortal
 cd proj-Profileportal
-virtualenv .
-source bin/activate
-
+virtualenv venv
+source venv/bin/activate
 ```
 ### Installation: 
 ```
-pip install django 
-pip install BeautifulSoup4
-pip install requests 
-pip install urllib3
-
+pip install -r requirements.txt
 ```
 ### Run project: 
 ```
 cd sprofileportal 
 python manage.py runserver
-
 ```
 
 
