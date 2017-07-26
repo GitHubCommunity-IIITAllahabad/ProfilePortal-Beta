@@ -146,13 +146,10 @@
 <div class="login-page">
   <div class="form">    
     <form class="login-form" method="POST" action="." role="form">
+    	<div style="font-family: monospace;">
     	{% csrf_token %}
-      <input id="id_enrollment_no" type="text" placeholder="Enrollment No." name="enrollment_no"/>
-      <input id="id_first_name" type="text" placeholder="First Name" name="first_name"/>
-      <input id="id_last_name" type="text" placeholder="Last Name" name="last_name"/>
-      <input id="id_current_semester" type="text" placeholder="Current Semester" name="current_semester"/>
-      <input id="id_graduation_year" type="text" placeholder="Graduation Year" name="gradutaion_year"/>
-      <div class="form-group">
+    	{{ form.as_p }}
+    	</div>
       <button type='submit' class="center">Submit</button>
       
       
