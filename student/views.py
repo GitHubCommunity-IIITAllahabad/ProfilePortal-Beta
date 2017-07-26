@@ -67,7 +67,7 @@ def spoj(username):
     var = username
     url = base + var
     sauce = requests.get(url) 
-    soup = BeautifulSoup(sauce.content,'lxml')     # lxml is a parser
+    soup = BeautifulSoup(sauce.content,'html.parser')     # lxml is a parser
     #print(soup.prettify())
     iList = []
     info = (soup.find_all('p'))
