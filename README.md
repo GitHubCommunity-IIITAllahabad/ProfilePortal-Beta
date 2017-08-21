@@ -1,8 +1,7 @@
 
-#### (Look into the sprofileportal folder for source files)
 
 # Profile-Portal
-* Automatic profile portal for the members of an organisation.
+* Consolidated profile portal for the members of an organisation.
 * The portal is intended for IT/CS based orgs. where the data is grabbed from common websites like SPOJ, Codechef, GitHub, Codeforces, Codebuddy etc. and displayed in a consolidated form.
 
 ## How does it work ?
