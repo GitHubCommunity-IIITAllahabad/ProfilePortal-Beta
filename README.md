@@ -52,6 +52,9 @@ python manage.py runserver
 
 ## To-Do
 * Start improving the frontend design.
+* Add paginators for the index page.
+* Add scraping scripts for Hackerearth and Behance.
+* Improve github rank view critetion.
 * Collection of the data from the students and creating the actual database.
 * Rigorous testing of the website.
 
