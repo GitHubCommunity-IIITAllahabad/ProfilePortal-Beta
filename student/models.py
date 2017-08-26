@@ -26,7 +26,7 @@ class Student(models.Model):
         return self.user
 
 class Site(models.Model):
-    
+
     site_type = models.CharField(max_length=100, default=None)
     site_name = models.CharField(max_length=200, default=None)
     site_active = models.BooleanField(default=False)
@@ -53,7 +53,7 @@ class StudentSite(models.Model):
 
     def __str__(self):
         return str(self.user) + " - " + str(self.site)
-    
+
 class GithubRank(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,default=None,null=True)
     language = models.CharField(max_length=200, default=None,null=True)
