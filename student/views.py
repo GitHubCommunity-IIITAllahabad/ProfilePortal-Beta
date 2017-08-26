@@ -54,7 +54,7 @@ def codechef(username):
 
     listGCR = []  #Global and country ranking.
     listRanking = list(soup.findAll('div',class_="rating-ranks"))
-    rankingSoup = listRanking[0] 
+    rankingSoup = listRanking[0]
     for item in rankingSoup.findAll('a'):
             listGCR.append(item.get_text()) #Extracting the text from all anchor tags
     #print ("Global Ranking: "+listGCR[0])
@@ -66,7 +66,7 @@ def spoj(username):
     base = "https://spoj.com/users/"
     var = username
     url = base + var
-    sauce = requests.get(url) 
+    sauce = requests.get(url)
     soup = BeautifulSoup(sauce.content,'html.parser')     # lxml is a parser
     #print(soup.prettify())
     iList = []
@@ -83,7 +83,7 @@ def spoj(username):
 
 def github(username):
     url = "https://github.com/"+username
-    sauce = requests.get(url)   
+    sauce = requests.get(url)
     soup = BeautifulSoup(sauce.content,'html.parser')     # lxml is a parser
     #print(soup)
 
@@ -122,7 +122,7 @@ def githubRank(username):
                 if j!="ranking":
                     s+=j+" "
             lang.append(s.rstrip())
-            
+
     #print(lang)
     record = []
     s=""
@@ -133,7 +133,7 @@ def githubRank(username):
         if "We couldn't find your city from your location on GitHub" in c:
             s = "0-0-"
             s+= "Worldwide-"
-            
+
             d = b[i+2].text.split("/")
             r1=""
             r2=""
@@ -177,7 +177,7 @@ def githubRank(username):
             s+= r1 + "-" + r2 + "-"
             i = i+3
             s+= "Worldwide-"
-            
+
             d = b[i+2].text.split("/")
             r1=""
             r2=""
@@ -196,7 +196,7 @@ def githubRank(username):
             record.append(s)
             k+=1
             i = i+7
-            
+
     return (record)
     #print(record)
     #s=""
@@ -241,7 +241,7 @@ def codeforces(username):
         string = (listinfo[0].get_text())
         string = string.replace(" ","")
         str1,str2 = string.split('(')   # Well,.. don't judge me
-        str3,str4 = str1.split(':') 
+        str3,str4 = str1.split(':')
         out = int((str4.strip()))
         print(out)
         return(out)
@@ -251,7 +251,7 @@ temp_object_list=[]
 # def BaseView(request):
 #     query = request.GET.get("q")
 #     if query:
-#        print('a') 
+#        print('a')
 #        temp_object_list = Student.object.filter(Q(enrollment_no__icontains=query)).order_by('enrollment_no')
 #        return render(request,'student/base.html',{})
 
@@ -262,7 +262,7 @@ temp_object_list=[]
 #        object_list =  Student.objects.filter().order_by('enrollment_no')
 #        query = self.request.GET.get("q")
 #        if query:
-#           #print('a') 
+#           #print('a')
 #           temp_object_list = object_list.filter(Q(enrollment_no__icontains=query)).order_by('enrollment_no')
 #           object_list = temp_object_list
 #        return object_list
@@ -281,12 +281,12 @@ class IndexView(View):
         sem8 =  Student.objects.filter(current_semester=8).order_by('enrollment_no')
         sem9 =  Student.objects.filter(current_semester=9).order_by('enrollment_no')
         sem10 =  Student.objects.filter(current_semester=10).order_by('enrollment_no')
-        
+
         object_list = []
         query = self.request.GET.get("q")
         if query:
-           #print('a') 
-           temp_object_list = Student.objects.filter(Q(enrollment_no__icontains=query)).order_by('enrollment_no')
+           #print('a')
+           temp_object_list = Student.objects.filter(Q(user__first_name__contains=query) | Q(enrollment_no__icontains=query)).order_by('enrollment_no')
            object_list = temp_object_list
 
         context = {'object_list':object_list,'sem1':sem1,'sem2':sem2,'sem3':sem3,'sem4':sem4,'sem5':sem5,'sem6':sem6,'sem7':sem7,'sem8':sem8,'sem9':sem9,'sem10':sem10}
@@ -298,7 +298,7 @@ class DetailView(generic.DetailView):
 
 class AlbumCreate(CreateView):
     model = Student
-    
+
 
 class StudentUpdate(UpdateView):
     model = Student
@@ -331,19 +331,19 @@ class UserFormView(View):
 
             #send_mail(subject, message, from_email, to_list, fail_silently=True)
             subject = 'Thankyou for registering'
-            message = 'Welcome to IIITA profilePortal. Your username = ' + str(username) + ' Your password = ' + password  
+            message = 'Welcome to IIITA profilePortal. Your username = ' + str(username) + ' Your password = ' + password
             from_email = settings.EMAIL_HOST_USER
             to_list = [user.email,settings.EMAIL_HOST_USER]
             send_mail(subject,message,from_email,to_list,fail_silently=True)
-            
+
             return render(request,self.template_name,{ 'passwordSent':'Password successfully sent to your email','form': form})
 
         return render(request, self.template_name, {'form': form})
 
 class UserPasswordChange(View):
-    
+
     template_name = 'student/password_form.html'
-        
+
     def get(self, request):
         if request.user.is_authenticated():
             form = PasswordChangeForm(request.user)
@@ -360,16 +360,16 @@ class UserPasswordChange(View):
             return redirect('student:index')
         else:
             messages.error(request, 'Please correct the error below.')
-         
+
 
         return render(request, self.template_name, {'form': form})
 
 class ForgetPassword(View):
-    
+
     template_name = 'student/forget_password_form.html'
-        
+
     def get(self, request):
-        if request.user.is_authenticated(): 
+        if request.user.is_authenticated():
             return redirect('student:index')
         else:
             form = ForgetPasswordForm(request.GET)
@@ -380,7 +380,7 @@ class ForgetPassword(View):
         if form.is_valid():
             username = form.cleaned_data['username']
             email = form.cleaned_data['email']
-            
+
             usercount = User.objects.filter(username=username).count()
             if usercount==1:
                 user = User.objects.get(username=username)
@@ -391,7 +391,7 @@ class ForgetPassword(View):
 
                     #send_mail(subject, message, from_email, to_list, fail_silently=True)
                     subject = 'Password change'
-                    message = 'You forgot your passwordso we are sending new password. Change this password once you log in. Your username = ' + username + ' Your new password = ' + password  
+                    message = 'You forgot your passwordso we are sending new password. Change this password once you log in. Your username = ' + username + ' Your new password = ' + password
                     from_email = settings.EMAIL_HOST_USER
                     to_list = [user.email,settings.EMAIL_HOST_USER]
                     send_mail(subject,message,from_email,to_list,fail_silently=True)
@@ -403,23 +403,23 @@ class ForgetPassword(View):
             else:
                 messages.error(request, 'no such user exist')
                 return render(request, self.template_name, {'form': form})
-                
+
         else:
             messages.error(request, 'Please correct the error below.')
-         
+
 
         return render(request, self.template_name, {'form': form})
-    
+
 class StudentCreate(CreateView):
     model = Student
     fields = '__all__'
     success_url = reverse_lazy('student:index')
 
 class StudentFormView(View):
-    
+
     form_class = StudentForm
     template_name = 'student/studentcreate.html'
-        
+
     def get(self, request):
         if request.user.is_authenticated():
             my_record = Student.objects.filter(id=request.user.id).count()
@@ -433,7 +433,7 @@ class StudentFormView(View):
 
     def post(self, request):
         form = self.form_class(request.POST)
-        
+
         if form.is_valid():
             count = Student.objects.filter(user=request.user).count()
             if count==0:
@@ -449,10 +449,10 @@ class StudentFormView(View):
         return render(request, self.template_name, {'form': form})
 
 class UpdateStudentFormView(View):
-    
+
     form_class = StudentForm
     template_name = 'student/studentupdate.html'
-        
+
     def get(self, request):
         if request.user.is_authenticated():
             my_record = Student.objects.filter(id=request.user.id)
@@ -468,7 +468,7 @@ class UpdateStudentFormView(View):
     def post(self, request):
         my_record = Student.objects.get(id=request.user.id)
         form = self.form_class(request.POST,instance=my_record)
-        
+
         if form.is_valid():
             student = form
             student.save()
@@ -484,7 +484,7 @@ class UpdateStudentSiteFormView(View):
             my_record = StudentSite.objects.filter(user=request.user)
             # print(my_record)
             for record in my_record:
-                
+
                 if record.site.site_name == 'codechef':
                     out = codechef(record.username).split(" ")
                     record.site_rating = int(out[0])
@@ -523,13 +523,13 @@ class UpdateStudentSiteFormView(View):
             return redirect(RedirectURL)
         else:
             return redirect('student:index')
-    
-    
+
+
 class StudentSiteFormView(View):
-    
+
     form_class = StudentSiteForm
     template_name = 'student/addsite.html'
-        
+
     def get(self, request):
         if request.user.is_authenticated():
             form = self.form_class(None)
@@ -539,7 +539,7 @@ class StudentSiteFormView(View):
 
     def post(self, request):
         form = self.form_class(request.POST)
-        
+
         if form.is_valid():
             my_record = StudentSite.objects.filter(user=request.user)
             flag=0
@@ -550,7 +550,7 @@ class StudentSiteFormView(View):
             for record in my_record:
                 if record.site.site_name == str(form.cleaned_data.get('site').site_name) and record.username.lower() == str(form.cleaned_data.get('username').lower()):
                     flag=1
-                
+
             if flag==0:
                 studentsite = form.save(commit=False)
                 studentsite.user = request.user
@@ -581,7 +581,7 @@ class StudentSiteFormView(View):
                     out = codeforces(form.cleaned_data['username'])
                     print(out)
                     studentsite.site_rating = out
-                   
+
                 studentsite.save()
                 # s = "http://127.0.0.1:8000/studentportal/"+str(request.user.id)+"/"
                 CurrentURL = get_current_site(request)
@@ -597,7 +597,7 @@ class StudentSiteFormView(View):
         return render(request, self.template_name, {'form': form})
 
 class GithubRankView(View):
-    
+
     def get(self,request):
         my_site=Site.objects.filter(site_name="github")
         my_record = StudentSite.objects.filter(user=request.user)
@@ -614,34 +614,36 @@ class GithubRankView(View):
                             my_lang.world_rank = int(record[4])
                             my_lang.world_total = int(record[5])
                             my_lang.repos = int(record[7])
-                            my_lang.stars = int(record[9]) 
+                            my_lang.stars = int(record[9])
                             my_lang.save()
                         else:
                             #instance = GithubRank(user=request.user,language=record[0],city=record[1],city_rank=int(record[2]),city_total=int(record[3]),country=record[4],country_rank=int(record[5]),country_total=int(record[6]),world_rank=int(record[8]),world_total=int(record[9]),repos=int(record[11]),stars=int(record[13]))
                             my_lang.city_rank = int(record[2])
                             my_lang.city_total = int(record[3])
-                            my_lang.country_rank = int(record[5])  
+                            my_lang.country_rank = int(record[5])
                             my_lang.country_total = int(record[6])
                             my_lang.world_rank = int(record[8])
                             my_lang.world_total = int(record[9])
                             my_lang.repos = int(record[11])
-                            my_lang.stars = int(record[13]) 
+                            my_lang.stars = int(record[13])
                             my_lang.save()
                     else:
-                        
+
                         if record[1]=='0':
-                            
+
                             instance = GithubRank(user=request.user,language=record[0],world_rank=int(record[4]),world_total=int(record[5]),repos=int(record[7]),stars=int(record[9]))
                             instance.save()
                         else:
                             print(record[13])
                             instance = GithubRank(user=request.user,language=record[0],city=record[1],city_rank=int(record[2]),city_total=int(record[3]),country=record[4],country_rank=int(record[5]),country_total=int(record[6]),world_rank=int(record[8]),world_total=int(record[9]),repos=int(record[11]),stars=int(record[13]))
                             instance.save()
-                        
-        s = "http://127.0.0.1:8000/studentportal/"+str(request.user.id)+"/"
+        CurrentURL = get_current_site(request)
+        RedirectURL = 'http://' + str(CurrentURL) + '/studentportal/' + str(request.user.id)+"/"
+
+        s = RedirectURL
         return redirect(s)
 
-    
+
 class RanksView(View):
 
     def get(self,request):
@@ -662,7 +664,7 @@ class RanksView(View):
 
         context = {'codechef':codechef, 'spoj':spoj, 'github':github,'codebuddy':codebuddy,'codeforces':codeforces,'javascript':javascript,'c':c,'cpp':cpp,'php':php,'python':python,'html':html,'css':css,'processing':processing,'ruby':ruby}
         return render(request,'student/ranks.html',context)
-        
+
 
 def logout_view(request):
     logout(request)
