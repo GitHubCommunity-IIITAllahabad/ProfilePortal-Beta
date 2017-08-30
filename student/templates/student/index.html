@@ -24,195 +24,210 @@
     	</table>
 	<!--End of search results-->
 	{% else %}
-<br><br>
+	<br><br>
 	<div class="container" style="margin-left: 15%">
 		<ul class="nav nav-tabs">
-		  <li class="active"><a data-toggle="tab" href="#batch2k17" style="font-family:Raleway;font-size:21px;">Batch2k17</a></li>
-		  <li><a data-toggle="tab" href="#batch2k16" style="font-family:Raleway;font-size:21px;">Batch2k16</a></li>
-		  <li><a data-toggle="tab" href="#batch2k15" style="font-family:Raleway;font-size:21px;">Batch2k15</a></li>
-			<li><a data-toggle="tab" href="#batch2k14" style="font-family:Raleway;font-size:21px;">Batch2k14</a></li>
-			<li><a data-toggle="tab" href="#batch2k13" style="font-family:Raleway;font-size:21px;">Batch2k13</a></li>
-		</ul>
+	    <li class="active"><a data-toggle="tab" href="#batch2k17" style="font-family:Raleway;font-size:21px;">Batch2k17</a></li>
+	    <li><a data-toggle="tab" href="#batch2k16" style="font-family:Raleway;font-size:21px;">Batch2k16</a></li>
+	    <li><a data-toggle="tab" href="#batch2k15" style="font-family:Raleway;font-size:21px;">Batch2k15</a></li>
+	    <li><a data-toggle="tab" href="#batch2k14" style="font-family:Raleway;font-size:21px;">Batch2k14</a></li>
+	  </ul>
 	</div>
 
-<br><br>
-	{% if sem1 %}
-		<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">Semester 1</h2>
-        <p style="text-align:center;font-family:Raleway;color: #55acee">Click on the Roll No. to view the profiles.<p>
-		<table class="table-fill">
-    	<thead >
-    		<tr>
-    			<th class="text-center">RollNo.</th>
-    			<th class="text-center">Name</th>
-    		</tr>
-    	</thead>
-    	<tbody class="table-hover">
-    		{% for student in sem1 %}
-    		<tr>
-    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
-    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
+  <div class="tab-content">
+		<!--Batch 2k17-->
+    <div id="batch2k17" class="tab-pane fade in active">
+			<br>
+      {% if sem1 %}
+				<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">Semester 1</h2>
+		        <p style="text-align:center;font-family:Raleway;color: #55acee">Click on the Roll No. to view the profiles.<p>
+				<table class="table-fill">
+		    	<thead >
+		    		<tr>
+		    			<th class="text-center">RollNo.</th>
+		    			<th class="text-center">Name</th>
+		    		</tr>
+		    	</thead>
+		    	<tbody class="table-hover">
+		    		{% for student in sem1 %}
+		    		<tr>
+		    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
+		    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
 
-    		</tr>
+		    		</tr>
 
-    		{% endfor %}
-    	</tbody>
+		    		{% endfor %}
+		    	</tbody>
 
-    	</table>
-	{% endif %}
+		    	</table>
+			{% elif sem2 %}
+				<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">Semester 2</h2>
+		        <p style="text-align:center;font-family:Raleway;color: #55acee">Click on the Roll No. to view the profiles.<p>
+				<table class="table-fill">
+		    	<thead >
+		    		<tr>
+		    			<th class="text-center">RollNo.</th>
+		    			<th class="text-center">Name</th>
+		    		</tr>
+		    	</thead>
+		    	<tbody class="table-hover">
+		    		{% for student in sem2 %}
+		    		<tr>
+		    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
+		    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
 
-	{% if sem2 %}
-		<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">Semester 2</h2>
-        <p style="text-align:center;font-family:Raleway;color: #55acee">Click on the Roll No. to view the profiles.<p>
-		<table class="table-fill">
-    	<thead >
-    		<tr>
-    			<th class="text-center">RollNo.</th>
-    			<th class="text-center">Name</th>
-    		</tr>
-    	</thead>
-    	<tbody class="table-hover">
-    		{% for student in sem2 %}
-    		<tr>
-    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
-    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
+		    		</tr>
 
-    		</tr>
+		    		{% endfor %}
+		    	</tbody>
 
-    		{% endfor %}
-    	</tbody>
+		    	</table>
+			{% else %}
+				<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">No User has registered yet!</h2>
+			{% endif %}
+    </div>
+		<!--End of 2k17-->
+		<!--Batch 2k16-->
+    <div id="batch2k16" class="tab-pane fade">
+			<br>
+      {% if sem3 %}
+				<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">Semester 3</h2>
 
-    	</table>
-	{% endif %}
+						<p style="text-align:center;font-family:Raleway;color: #55acee">(Click on the Roll No. to view the profiles.)<p>
+				<table class="table-fill">
+					<thead >
+						<tr>
+							<th class="text-center">RollNo.</th>
+							<th class="text-center">Name</th>
+						</tr>
+					</thead>
+					<tbody class="table-hover">
+						{% for student in sem3 %}
+						<tr>
+							<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
+							<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			{% elif sem4 %}
+				<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">Semester 4</h2>
+						<p style="text-align:center;font-family:Raleway;color: #55acee">(Click on the Roll No. to view the profiles.)<p>
+				<table class="table-fill">
+					<thead >
+						<tr>
+							<th class="text-center">RollNo.</th>
+							<th class="text-center">Name</th>
+						</tr>
+					</thead>
+					<tbody class="table-hover">
+						{% for student in sem4 %}
+						<tr>
+							<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
+							<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
+						</tr>
+						{% endfor %}
+					</tbody>
+					</table>
+				{% else %}
+					<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">No User Registered yet</h2>
+				{% endif %}
+	  </div>
+		<!--End of batch 2k16-->
+		<!--Batch 2k15-->
+    <div id="batch2k15" class="tab-pane fade">
+			<br>
+			{% if sem5 %}
+				<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">Semester 5</h2>
+		        <p style="text-align:center;font-family:Raleway;color: #55acee">(Click on the Roll No. to view the profiles.)<p>
+				<table class="table-fill">
+		    	<thead >
+		    		<tr>
+		    			<th class="text-center">RollNo.</th>
+		    			<th class="text-center">Name</th>
+		    		</tr>
+		    	</thead>
+		    	<tbody class="table-hover">
+		    		{% for student in sem5 %}
+		    		<tr>
+		    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
+		    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
+		    		</tr>
+		    		{% endfor %}
+		    	</tbody>
+		    	</table>
+			{% elif sem6 %}
+				<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">Semester 6</h2>
+						<p style="text-align:center;font-family:Raleway;color: #55acee">(Click on the Roll No. to view the profiles.)<p>
+				<table class="table-fill">
+					<thead >
+						<tr>
+							<th class="text-center">RollNo.</th>
+							<th class="text-center">Name</th>
+						</tr>
+					</thead>
+					<tbody class="table-hover">
+						{% for student in sem6 %}
+						<tr>
+							<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
+							<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
+						</tr>
+						{% endfor %}
+					</tbody>
+			{% else %}
+				<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">No User Registered yet</h2>
+			{% endif %}
+    </div>
+		<!--End of 2k15 -->
+		<!--Batch 2k14-->
+    <div id="batch2k14" class="tab-pane fade">
+			<br>
+			{% if sem7 %}
+				<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">Semester 7</h2>
+						<p style="text-align:center;font-family:Raleway;color: #55acee">(Click on the Roll No. to view the profiles.)<p>
+				<table class="table-fill">
+					<thead >
+						<tr>
+							<th class="text-center">RollNo.</th>
+							<th class="text-center">Name</th>
+						</tr>
+					</thead>
+					<tbody class="table-hover">
+						{% for student in sem7 %}
+						<tr>
+							<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
+							<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
+						</tr>
+						{% endfor %}
+					</tbody>
+					</table>
+			{% elif sem8 %}
+				<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">Semester 8</h2>
+						<p style="text-align:center;font-family:Raleway;color: #55acee">(Click on the Roll No. to view the profiles.)<p>
+				<table class="table-fill">
+					<thead >
+						<tr>
+							<th class="text-center">RollNo.</th>
+							<th class="text-center">Name</th>
+						</tr>
+					</thead>
+					<tbody class="table-hover">
+						{% for student in sem8 %}
+						<tr>
+							<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
+							<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
+						</tr>
+						{% endfor %}
+					</tbody>
+			{% else %}
+				<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">No User Registered yet</h2>
+			{% endif %}
+    </div>
+		<!--End of 2k14-->
+  </div>
+	<!--End of toggle section-->
 
-	{% if sem3 %}
-		<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">Semester 3</h2>
-        <p style="text-align:center;font-family:Raleway;color: #55acee">(Click on the Roll No. to view the profiles.)<p>
-		<table class="table-fill">
-    	<thead >
-    		<tr>
-    			<th class="text-center">RollNo.</th>
-    			<th class="text-center">Name</th>
-    		</tr>
-    	</thead>
-    	<tbody class="table-hover">
-    		{% for student in sem3 %}
-    		<tr>
-    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
-    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
-
-    		</tr>
-
-    		{% endfor %}
-    	</tbody>
-
-    	</table>
-	{% endif %}
-
-	{% if sem4 %}
-		<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">Semester 4</h2>
-        <p style="text-align:center;font-family:Raleway;color: #55acee">(Click on the Roll No. to view the profiles.)<p>
-		<table class="table-fill">
-    	<thead >
-    		<tr>
-    			<th class="text-center">RollNo.</th>
-    			<th class="text-center">Name</th>
-    		</tr>
-    	</thead>
-    	<tbody class="table-hover">
-    		{% for student in sem4 %}
-    		<tr>
-    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
-    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
-
-    		</tr>
-
-    		{% endfor %}
-    	</tbody>
-    	</table>
-
-	{% elif sem5 %}
-		<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">Semester 5</h2>
-        <p style="text-align:center;font-family:Raleway;color: #55acee">(Click on the Roll No. to view the profiles.)<p>
-		<table class="table-fill">
-    	<thead >
-    		<tr>
-    			<th class="text-center">RollNo.</th>
-    			<th class="text-center">Name</th>
-    		</tr>
-    	</thead>
-    	<tbody class="table-hover">
-    		{% for student in sem5 %}
-    		<tr>
-    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
-    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
-    		</tr>
-    		{% endfor %}
-    	</tbody>
-    	</table>
-	{% endif %}
-
-	{% if sem6 %}
-		<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">Semester 6</h2>
-        <p style="text-align:center;font-family:Raleway;color: #55acee">(Click on the Roll No. to view the profiles.)<p>
-		<table class="table-fill">
-    	<thead >
-    		<tr>
-    			<th class="text-center">RollNo.</th>
-    			<th class="text-center">Name</th>
-    		</tr>
-    	</thead>
-    	<tbody class="table-hover">
-    		{% for student in sem6 %}
-    		<tr>
-    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
-    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
-    		</tr>
-    		{% endfor %}
-    	</tbody>
-    	</table>
-	{% endif %}
-
-	{% if sem7 %}
-		<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">Semester 7</h2>
-        <p style="text-align:center;font-family:Raleway;color: #55acee">(Click on the Roll No. to view the profiles.)<p>
-		<table class="table-fill">
-    	<thead >
-    		<tr>
-    			<th class="text-center">RollNo.</th>
-    			<th class="text-center">Name</th>
-    		</tr>
-    	</thead>
-    	<tbody class="table-hover">
-    		{% for student in sem7 %}
-    		<tr>
-    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
-    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
-    		</tr>
-    		{% endfor %}
-    	</tbody>
-    	</table>
-	{% endif %}
-
-	{% if sem8 %}
-		<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">Semester 8</h2>
-        <p style="text-align:center;font-family:Raleway;color: #55acee">(Click on the Roll No. to view the profiles.)<p>
-		<table class="table-fill">
-    	<thead >
-    		<tr>
-    			<th class="text-center">RollNo.</th>
-    			<th class="text-center">Name</th>
-    		</tr>
-    	</thead>
-    	<tbody class="table-hover">
-    		{% for student in sem8 %}
-    		<tr>
-    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.enrollment_no}}</a> </td>
-    			<td class="text-center"> <a href="{% url 'student:detail' student.id %}" style="text-decoration: none">{{student.user}}</a> </td>
-    		</tr>
-    		{% endfor %}
-    	</tbody>
-    	</table>
-	{% endif %}
+<!--
 
 	{% if sem9 %}
 		<h2 style="text-align:center;font-family:Raleway;color:#4D7F89">Semester 9</h2>
@@ -254,12 +269,13 @@
     		{% endfor %}
     	</tbody>
     	</table>
-	{% endif %}
+	{% endif %} -->
 <!-- End of Student Display -->
 
 	{% endif %}
 	{% else %}
-   	         <h3>You don't have any student</h3>
+							<br>
+   	         <h2 style="text-align:center;font-family:Raleway;color:#4D7F89">You don't have any student</h2>
 	{% endif %}
 
 </div>
