@@ -2,7 +2,7 @@
 {% block title %}Details page{% endblock %}
 {% block body %}
 <div class="conatainer">
-		<div class="header" style="padding-top:-20px;margin-top:-20px;">Profile</div>
+		<div class="header" style="padding-top:-20px;margin-top:-20px;font-family: Raleway">Profile</div>
 		<hr id="header_l"><br>
 </div>
 <div class="row">
@@ -14,9 +14,9 @@
 <h3>{{student.user}}</h3>
 
 {% if request.user.id == student.user.id %}
-<h3><a href="{% url 'student:studentsite' %}">Add Site</a></h3>
-<h3><a href="{% url 'student:studentsiteupdate' %}">Update Site</a></h3>
-<h3><a href="{% url 'student:userpasswordchange' %}">Change Password</a></h3>
+<h3><a href="{% url 'student:studentsite' %}" style="font-family: Raleway">Add Site</a></h3>
+<h3><a href="{% url 'student:studentsiteupdate' %}" style="font-family: Raleway">Update Site</a></h3>
+<h3><a href="{% url 'student:userpasswordchange' %}" style="font-family: Raleway">Change Password</a></h3>
 {% else %}
 <br>
 {% endif %}
@@ -31,10 +31,9 @@
 		<li role="presentation"><a href="#CODECHEF" aria-controls="CODECHEF" role="tab" data-toggle="tab">CODECHEF</a></li>
 		<li role="presentation"><a href="#CODEBUDDY" aria-controls="CODEBUDDY" role="tab" data-toggle="tab">CODEBUDDY</a></li>
                 <li role="presentation"><a href="#CODEFORCES" aria-controls="CODEFORCES" role="tab" data-toggle="tab">CODEFORCES</a></li>
-		
+
 	  </ul>
-	  
-	<!-- <hr style="width:100%"> -->
+
 	  <br><br>
 	  <!-- Tab panes -->
           <font size="5">
@@ -46,8 +45,8 @@
                                 </div>
                         </div>
                 </div>
-         
-          
+
+
 		<div role="tabpanel" class="tab-pane fade" id="GITHUB">
 			<div class="content">
 				<div class="thumbnail" style="width:50%;background-color:palegreen">
@@ -87,16 +86,16 @@
 				    	{% if request.user.id == student.user.id %}
 
 					<h3><a href="{% url 'student:githubrank' %}">Add/Update Github Ranks based on languages</a></h3>
-					
+
 					{% else %}
 					<br>
 					{% endif %}
                                 </div>
                                 </div>
-                       
+
                 </div>
-          
-          
+
+
 		<div role="tabpanel" class="tab-pane fade" id="SPOJ">
 			<div class="content">
 				<div class="thumbnail" style="width:50%;background-color:palegreen">
@@ -111,8 +110,8 @@
                                 </div>
                         </div>
                 </div>
-          
-         
+
+
 		<div role="tabpanel" class="tab-pane fade" id="CODECHEF">
 			<div class="content">
 				<div class="thumbnail" style="width:50%;background-color:palegreen">
@@ -127,7 +126,7 @@
                                 </div>
                         </div>
                 </div>
-                
+
                 <div role="tabpanel" class="tab-pane fade" id="CODEBUDDY">
 			<div class="content">
 				<div class="thumbnail" style="width:50%;background-color:palegreen">
@@ -142,7 +141,7 @@
                                 </div>
                         </div>
                 </div>
-                
+
 		<div role="tabpanel" class="tab-pane fade" id="CODEFORCES">
 			<div class="content">
 				<div class="thumbnail" style="width:50%;background-color:palegreen">

@@ -9,6 +9,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:300,400,600,700&amp;lang=en" />
 	<!-- <link rel="stylesheet" type="text/css" href="{% static 'student/style.css' %}" /> -->
 	<link rel="stylesheet" type="text/css" href="{% static 'student/tables.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'student/custom.css' %}" />
@@ -31,7 +32,7 @@
 <body>
 
 
-<nav class="navbar navbar-inverse"  style ="background-color: #55acee;font-family:monospace;border-color: #55acee">
+<nav class="navbar navbar-inverse"  style ="background-color: #55acee;font-family:Raleway;border-color: #55acee">
     <div class="container-fluid">
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
@@ -39,7 +40,7 @@
 			 <span class="icon-bar"></span>
 			 <span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="{% url 'student:index' %}" style="color:white">Portal</a>
+		<a class="navbar-brand" href="{% url 'student:index' %}" style="color:white;font-family:Raleway">Portal</a>
 	</div>
 
     <!-- items -->
@@ -137,13 +138,13 @@
 </nav>
 
 {% if not user.username %}
-<h3 style ="text-align: center;color: #55acee;font-family:monospace;">User not logged in. Please login.</h3>
+<h3 style ="text-align: center;color: #55acee;font-family:Raleway;">User not logged in. Please login.</h3>
 {% else %}
-<h3 style ="text-align: center;color: #55acee;font-family:monospace;">Welcome {{user.username}}</h3>
+<h3 style ="text-align: center;color: #55acee;font-family:Raleway;">Welcome {{user.username}}</h3>
 {% endif %}
 
 <!--Form-->
-<h3 style ="text-align: center;color: #55acee;font-family:monospace;">Edit your Details here</h3>
+<h3 style ="text-align: center;color: #55acee;font-family:Raleway;">Edit your Details here</h3>
 <div class="login-page">
   <div class="form">
     <form class="login-form" method="POST" action="." role="form">
@@ -197,10 +198,6 @@
     alert('{{ message }}');
 </script>
 {% endif %}
-{% if passwordSent %}
-<script>
-    alert('{{ passwordSent }}');
-</script>
-{% endif %}
+
 </body>
 </html>

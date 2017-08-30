@@ -6,6 +6,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:300,400,600,700&amp;lang=en" />
+
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
 	<!-- <link rel="stylesheet" type="text/css" href="{% static 'student/style.css' %}" /> -->
 	<link rel="stylesheet" type="text/css" href="{% static 'student/tables.css' %}" />
@@ -23,14 +25,14 @@
 	}
 </style>
 
-        
+
 </head>
 
 
 <body>
 
 
-<nav class="navbar navbar-inverse"  style ="background-color: #55acee;font-family:monospace;border-color: #55acee">
+<nav class="navbar navbar-inverse"  style ="background-color: #55acee;font-family:Raleway;border-color: #55acee">
     <div class="container-fluid">
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
@@ -40,30 +42,20 @@
 		</button>
 		<a class="navbar-brand" href="{% url 'student:index' %}" style="color:white">Portal</a>
 	</div>
-	
+
     <!-- items -->
 	<div class="collapse navbar-collapse" id="topNavBar">
-		
+
 		<ul class="nav navbar-nav" style="background-color: #55acee" >
 			<li class="active navli" style="background-color: #55acee"  >
-				<a href="{% url 'student:index' %}" style="background-color: #55acee" class="nava navli">	
-					
+				<a href="{% url 'student:index' %}" style="background-color: #55acee" class="nava navli">
 					Students
 				</a>
 			</li>
-			
 		</ul>
 
-		<!--<form class="navbar-form navbar-left" role="search" method="GET" action="">
-			<div class="form-group">
-				<input type="text" palceholder="Search here" class="form-control" name="q" value="{{ request.GET.q }}" >
-			</div>
-			<button type="submit" class="btn btn-default">Search</button>
-		
-		    </form>
-                -->
         <form class="navbar-form navbar-left" role="search" method="get" action="#">
-			
+
                         <div class="form-group">
 				<input type="text" palceholder="Search here" class="form-control" name="q" id="q" value="{{ request.GET.q }}" />
 			</div>
@@ -80,42 +72,42 @@
 			{% if request.user.is_authenticated %}
 
 			<li class="navli">
-				<a href="{% url 'student:ranks' %}" clas="nava">	
+				<a href="{% url 'student:ranks' %}" clas="nava">
 					<span class="glyphicon glyphicon-th" aria-hidden="true"></span>&nbsp;
 					Ranking
 				</a>
 			</li>
             <li class="navli">
-				<a href="{% url 'student:studentupdate' %}" class="nava">	
+				<a href="{% url 'student:studentupdate' %}" class="nava">
 					<span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;
 					Update details
 				</a>
 			</li>
 			<li class="navli">
-				<a href="{% url 'student:studentcreate' %}" class="nava">	
+				<a href="{% url 'student:studentcreate' %}" class="nava">
 					<span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;
 					Add details
 				</a>
-			</li>       
+			</li>
 			<li class="navli">
-				<a href="{% url 'student:logout' %}" class="nava">	
+				<a href="{% url 'student:logout' %}" class="nava">
 					<span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;
 					Logout
 				</a>
 			</li>
-			
+
             {% else %}
 
             <li class="navli">
-				<a href="{% url 'student:register' %}" class="nava">	
+				<a href="{% url 'student:register' %}" class="nava">
 					<span class="glyphicon glyphicon-off" aria-hidden="true" ></span>&nbsp;
 					Register
 				</a>
 			</li>
-			
-                        
+
+
 			<li class="navli">
-				<a href="{% url 'student:login' %}" class="nava" >	
+				<a href="{% url 'student:login' %}" class="nava" >
 					<span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;
 					Login
 				</a>
@@ -130,29 +122,24 @@
 </nav>
 
 {% if not user.username %}
-<h3 style ="text-align: center;color: #55acee;font-family:monospace;">Your password will be mailed to your registered Email address</h3>
+<h3 style ="text-align: center;color: #55acee;font-family:Raleway;">Your password will be mailed to your registered Email address</h3>
 {% else %}
-<h3 style ="text-align: center">Welcome {{user.username}}</h3>
+<h3 style ="text-align: center;font-family: Raleway">Welcome {{user.username}}</h3>
 {% endif %}
 
 <!--Form-->
 
 <div class="login-page">
-  <div class="form">    
+  <div class="form">
     <form class="login-form" method="POST" action="." role="form">
     	{% csrf_token %}
       <input id="id_username" type="text" placeholder="Username" name="username"/>
       <input id="id_email" type="text" placeholder="E-mail" name="email"/>
       <div class="form-group">
       <button type='submit' class="center">Submit</button>
-      
-      
+
+
 	</form>
-	
-<!-- 	<div id="buttons" class="center">
-		<br>
-  <a href="{% url 'student:index' %}" class="btnBottom blue" class="center">View profiles</a>
-</div> -->
 
   </div>
 </div>
@@ -163,28 +150,6 @@
   <a href="{% url 'student:index' %}" class="btnBottom blue" class="center">View profiles</a>
 </div>
 <br><br>
-<!-- <div class="container-fluid"> -->
-<!-- 	<div class="row">
-		<div class="col-sm-12 col-md-7">
-			<div class="panel panel-default">
-				<div class="panel-body">
-                                     <h3>Login</h3>
-					<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
-						{% csrf_token %}
-						{% include 'student/form-template.html' %}
-						<div class="form-group">
-							<div class="col-sm-offset-2 col-sm-10">
-								<button type="submit" class="btn btn-success">Submit</button>
-							</div>
-						</div>
-					</form>
-					<a href="{% url 'student:forgetpassword' %}"> ForgetPassword ? </a>
-				</div>
-			</div>
-		</div>
-	</div> -->
-<!-- </div> -->
-
 
 {% if message %}
 <script>

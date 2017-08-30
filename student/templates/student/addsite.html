@@ -23,7 +23,7 @@
 	}
 </style>
 
-        
+
 </head>
 
 
@@ -38,18 +38,18 @@
 		</button>
 		<a class="navbar-brand" href="{% url 'student:index' %}" style="color:white">Portal</a>
 	</div>
-	
+
     <!-- items -->
 	<div class="collapse navbar-collapse" id="topNavBar">
-		
+
 		<ul class="nav navbar-nav" style="background-color: #55acee" >
 			<li class="active navli" style="background-color: #55acee"  >
-				<a href="{% url 'student:index' %}" style="background-color: #55acee" class="nava navli">	
-					
+				<a href="{% url 'student:index' %}" style="background-color: #55acee" class="nava navli">
+
 					Students
 				</a>
 			</li>
-			
+
 		</ul>
 
 		<!--<form class="navbar-form navbar-left" role="search" method="GET" action="">
@@ -57,11 +57,11 @@
 				<input type="text" palceholder="Search here" class="form-control" name="q" value="{{ request.GET.q }}" >
 			</div>
 			<button type="submit" class="btn btn-default">Search</button>
-		
+
 		    </form>
                 -->
         <form class="navbar-form navbar-left" role="search" method="get" action="#">
-			
+
                         <div class="form-group">
 				<input type="text" palceholder="SearchHere" class="form-control" name="q" id="q" value="{{ request.GET.q }}" />
 			</div>
@@ -78,48 +78,48 @@
 			{% if request.user.is_authenticated %}
 
 <!-- 			<li class="navli">
-				<a href="{% url 'student:ranks' %}" clas="nava">	
+				<a href="{% url 'student:ranks' %}" clas="nava">
 					<span class="glyphicon glyphicon-th" aria-hidden="true"></span>&nbsp;
 					Ranking
 				</a>
 			</li> -->
 			<li class="navli">
-				<a href="{% url 'student:ranks' %}" class="nava">	
+				<a href="{% url 'student:ranks' %}" class="nava">
 					<span class="glyphicon glyphicon-th" aria-hidden="true"></span>&nbsp;
 					Ranking
 				</a>
 			</li>
             <li class="navli">
-				<a href="{% url 'student:studentupdate' %}" class="nava">	
+				<a href="{% url 'student:studentupdate' %}" class="nava">
 					<span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;
 					Update details
 				</a>
 			</li>
 			<li class="navli">
-				<a href="{% url 'student:studentcreate' %}" class="nava">	
+				<a href="{% url 'student:studentcreate' %}" class="nava">
 					<span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;
 					Add details
 				</a>
-			</li>       
+			</li>
 			<li class="navli">
-				<a href="{% url 'student:logout' %}" class="nava">	
+				<a href="{% url 'student:logout' %}" class="nava">
 					<span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;
 					Logout
 				</a>
 			</li>
-			
+
             {% else %}
 
             <li class="navli">
-				<a href="{% url 'student:register' %}" class="nava">	
+				<a href="{% url 'student:register' %}" class="nava">
 					<span class="glyphicon glyphicon-off" aria-hidden="true" ></span>&nbsp;
 					Register
 				</a>
 			</li>
-			
-                        
+
+
 			<li class="navli">
-				<a href="{% url 'student:login' %}" class="nava" >	
+				<a href="{% url 'student:login' %}" class="nava" >
 					<span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;
 					Login
 				</a>
@@ -135,31 +135,31 @@
 
 
 
-<h3 style ="text-align: center;color: #55acee;font-family:monospace;">Fill in your site details here</h3><!--Form-->
+<h3 style ="text-align: center;color: #55acee;font-family:Raleway;">Fill in your site details here</h3><!--Form-->
 
 
 <div class="login-page">
-  <div class="form">    
+  <div class="form">
     <form class="login-form" method="POST" action="." role="form">
-    	
+
     	{% csrf_token %}
 
-    <p style="float:left;font-family:Monospace;color:#787A7A;">Site:</p>
-	<div style="font-family: Monospace">{{form.site}}</div>
+    <p style="float:left;font-family:Raleway;color:#787A7A;">Site:</p>
+	<div style="font-family: Raleway">{{form.site}}</div>
      <input id="id_username" type="text" placeholder="Username " name="username"/>
 
-   			
+
 <br>
 
-    <p style="float:left;font-family:Monospace;color:#787A7A;">IsActive:</p>
+    <p style="float:left;font-family:Raleway;color:#787A7A;">IsActive:</p>
 	<div>{{form.is_active}}</div>
 
-      <div class="form-group"> 
+      <div class="form-group">
 
-      
+
       <button type='submit' class="center">Submit</button>
-      
-      
+
+
 	</form>
 
 
@@ -181,19 +181,19 @@
 </body>
 </html>
 
-<!--  
+<!--
 <body>
  <h1>WElcome to the prject</h1>
    <form method="POST" action="" class="post-form">{% csrf_token %}
 {{ form.as_p }}
 
-        
+
 {% for field in form %}
 	{% if error_message %}
                         <p><strong>{{ error_message }}</strong></p>
     {% endif %}
 	<label>{{ field.label_tag }}</label>
-	<div> {{ field }} </div>	
+	<div> {{ field }} </div>
 {% endfor %}
 
         <button type="submit" class="save btn btn-default">Save</button>
@@ -205,4 +205,3 @@
     </script>
 {% endif %}
 </body> -->
-

@@ -15,14 +15,14 @@
 	{% for site in student.user.studentsite_set.all %}
                 {% if site.site.site_name == "github" %}
 		<label for="site{{ forloop.counter}}">
-			{{site.site}} -- 
+			{{site.site}} --
                         {{site.username}}
-			
+
 		</label><br>
                 {% else %}
                 <label for="site{{ forloop.counter}}">
 			{{site.site}}
-			
+
 		</label><br>
                 {% endif %}
 	{% endfor %}
@@ -34,7 +34,7 @@
 	{% for site in student.user.studentsite_set.all %}
 		<label for="site{{ forloop.counter}}">
 			{{site.site}}
-			
+
 		</label><br>
 	{% endfor %}
 {% endif %}
