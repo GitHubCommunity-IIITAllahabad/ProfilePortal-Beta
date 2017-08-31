@@ -38,29 +38,46 @@
 		<div role="tabpanel" class="tab-pane fade" id="GITHUB">
 			<div class="content">
 				<div class="well">
-                                    
-                                    <div class="row"><center>
-                                        <div class="col-lg-3 col-md-3">Username</div><div class="col-lg-3 col-md-3">Enrollment No</div><div class="col-lg-3 col-md-3">Contributions</div><div class="col-lg-3 col-md-3">Repositories</div>
-                                    </center></div>
-                                    <ol type="1">
-				    {% for site in github %}
-                                    {% if site.site.site_name == "github" %}
-                                         {% if request.user == site.user %}
-                                         <font color="light-green">
-                                         {% else %}
-                                         <font color="black">
-                                         {% endif %}
-                                         <div class="row"><center>
-                                        <li> <div class="col-lg-3 col-md-3">{{site.username}}</div><div class="col-lg-3 col-md-3">{% for student in site.user.student_set.all %}{% if student.user == site.user %}{{student.enrollment_no}}{% endif %}{% endfor %}</div><div class="col-lg-3 col-md-3">{{site.site_contribution}}</div><div class="col-lg-3 col-md-3">{{site.site_repo}}</div>
-                                    </li></center></div> 
-                                          
-                                         </font>
-                                    {% endif %}
-                                    {% endfor %}
-									
-                                      
-				    </ol>
-					<br></div>
+                              
+									<div class="container">
+									 
+										<div class="wrapper">
+											<table>
+												<thead>
+													<tr>
+														
+														<th>Username</th>
+														<th>Enrollment No</th>
+														<th>Contributions</th>
+														<th>Repositories</th>
+													</tr>
+												</thead>
+												<tbody>
+											
+												{% for site in github %}
+																{% if site.site.site_name == "github" %}
+																	 {% if request.user == site.user %}
+																	 <font color="light-green">
+																	 {% else %}
+																	 <font color="black">
+																	 {% endif %}
+																	
+																		<tr>
+																			<td class="rank">{{site.username}}</td>
+																			<td class="team">{% for student in site.user.student_set.all %}{% if student.user == site.user %}{{student.enrollment_no}}{% endif %}{% endfor %}</td>
+																			<td class="points">{{site.site_contribution}}</td>
+																			<td class="up-down">{{site.site_repo}}</td>
+																		</tr>
+																	
+																	 </font>
+																{% endif %}
+																{% endfor %}
+												
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
 					<h2>Language wise Ranks</h2>
 					<div class="well">
 					<div class="row">
@@ -293,25 +310,44 @@
 		<div role="tabpanel" class="tab-pane fade" id="SPOJ">
 			<div class="content">
 				<div class="well">
-                                    <div class="row"><center>
-                                        <div class="col-lg-3 col-md-3">Username</div><div class="col-lg-3 col-md-3">Enrollment No</div><div class="col-lg-3 col-md-3">Points</div><div class="col-lg-3 col-md-3">World Rank</div>
-                                    </center></div>
-                                    <ol type="1">
-				    {% for site in spoj %}
-                                    {% if site.site.site_name == "spoj" %}
-                                         {% if request.user == site.user %}
-                                         <font color="light-green">
-                                         {% else %}
-                                         <font color="black">
-                                         {% endif %}
-                                         <div class="row"><center>
-                                        <li> <div class="col-lg-3 col-md-3">{{site.username}}</div><div class="col-lg-3 col-md-3">{% for student in site.user.student_set.all %}{% if student.user == site.user %}{{student.enrollment_no}}{% endif %}{% endfor %}</div><div class="col-lg-3 col-md-3">{{site.site_point}}</div><div class="col-lg-3 col-md-3">{{site.site_rank}}</div>
-                                    </li></center></div>
-                                    	 </font>
-				    {% endif %}
-                                    {% endfor %}
-                                      
-				    </ol>
+                                    <div class="container">
+									 
+										<div class="wrapper">
+											<table>
+												<thead>
+													<tr>
+														
+														<th>Username</th>
+														<th>Enrollment No</th>
+														<th>Points</th>
+														<th>Rank</th>
+													</tr>
+												</thead>
+												<tbody>
+											
+												{% for site in spoj %}
+																{% if site.site.site_name == "spoj" %}
+																	 {% if request.user == site.user %}
+																	 <font color="light-green">
+																	 {% else %}
+																	 <font color="black">
+																	 {% endif %}
+																	
+																		<tr>
+																			<td class="rank">{{site.username}}</td>
+																			<td class="team">{% for student in site.user.student_set.all %}{% if student.user == site.user %}{{student.enrollment_no}}{% endif %}{% endfor %}</td>
+																			<td class="points">{{site.site_point}}</td>
+																			<td class="up-down">{{site.site_rank}}</td>
+																		</tr>
+																	
+																	 </font>
+																{% endif %}
+																{% endfor %}
+												
+												</tbody>
+											</table>
+										</div>
+									</div>
                                 </div>
                         </div>
                 </div>
@@ -320,26 +356,44 @@
 		<div role="tabpanel" class="tab-pane fade" id="CODECHEF">
 			<div class="content">
 				<div class="well">
-                                    <div class="row"><center>
-                                        <div class="col-lg-3 col-md-3">Username</div><div class="col-lg-3 col-md-3">Enrollment No</div><div class="col-lg-3 col-md-3">Rating</div><div class="col-lg-3 col-md-3">World Rank</div>
-                                    </center></div>
-                                    <ol type="1">
-				    {% for site in codechef %}
-                                    {% if site.site.site_name == "codechef" %}
-                                         {% if request.user == site.user %}
-                                         <font color="light-green">
-                                         {% else %}
-                                         <font color="black">
-                                         {% endif %}
-                                         <div class="row"><center>
-                                        <li> <div class="col-lg-3 col-md-3">{{site.username}}</div><div class="col-lg-3 col-md-3">{% for student in site.user.student_set.all %}{% if student.user == site.user %}{{student.enrollment_no}}{% endif %}{% endfor %}</div><div class="col-lg-3 col-md-3">{{site.site_rating}}</div><div class="col-lg-3 col-md-3">{{site.site_rank}}</div>
-                                        </li></center></div>
-                                            
-                                         </font>
-                                    {% endif %}
-                                    {% endfor %}
-                                      
-				    </ol>
+                                    <div class="container">
+									 
+										<div class="wrapper">
+											<table>
+												<thead>
+													<tr>
+														
+														<th>Username</th>
+														<th>Enrollment No</th>
+														<th>Rating</th>
+														<th>Rank</th>
+													</tr>
+												</thead>
+												<tbody>
+											
+												{% for site in spoj %}
+																{% if site.site.site_name == "codechef" %}
+																	 {% if request.user == site.user %}
+																	 <font color="light-green">
+																	 {% else %}
+																	 <font color="black">
+																	 {% endif %}
+																	
+																		<tr>
+																			<td class="rank">{{site.username}}</td>
+																			<td class="team">{% for student in site.user.student_set.all %}{% if student.user == site.user %}{{student.enrollment_no}}{% endif %}{% endfor %}</td>
+																			<td class="points">{{site.site_rating}}</td>
+																			<td class="up-down">{{site.site_rank}}</td>
+																		</tr>
+																	
+																	 </font>
+																{% endif %}
+																{% endfor %}
+												
+												</tbody>
+											</table>
+										</div>
+									</div>
                                 </div>
                         </div>
                 </div>
@@ -347,25 +401,44 @@
 		<div role="tabpanel" class="tab-pane fade" id="CODEBUDDY">
 			<div class="content">
 				<div class="well">
-                                    <div class="row"><center>
-                                        <div class="col-lg-3 col-md-3">Username</div><div class="col-lg-3 col-md-3">Enrollment No</div><div class="col-lg-3 col-md-3">Points</div><div class="col-lg-3 col-md-3">World Rank</div>
-                                    </center></div>
-                                    <ol type="1">
-				    {% for site in codebuddy %}
-                                    {% if site.site.site_name == "codebuddy" %}
-                                         {% if request.user == site.user %}
-                                         <font color="light-green">
-                                         {% else %}
-                                         <font color="black">
-                                         {% endif %}
-                                         <div class="row"><center>
-                                        <li> <div class="col-lg-3 col-md-3">{{site.username}}</div><div class="col-lg-3 col-md-3">{% for student in site.user.student_set.all %}{% if student.user == site.user %}{{student.enrollment_no}}{% endif %}{% endfor %}</div><div class="col-lg-3 col-md-3">{{site.site_point}}</div><div class="col-lg-3 col-md-3">{{site.site_rank}}</div>
-                                    </li></center></div>
-                                         </font>
-                                    {% endif %}
-                                    {% endfor %}
-                                      
-				    </ol>
+                                    <div class="container">
+									 
+										<div class="wrapper">
+											<table>
+												<thead>
+													<tr>
+														
+														<th>Username</th>
+														<th>Enrollment No</th>
+														<th>Points</th>
+														<th>Rank</th>
+													</tr>
+												</thead>
+												<tbody>
+											
+												{% for site in spoj %}
+																{% if site.site.site_name == "codebuddy" %}
+																	 {% if request.user == site.user %}
+																	 <font color="light-green">
+																	 {% else %}
+																	 <font color="black">
+																	 {% endif %}
+																	
+																		<tr>
+																			<td class="rank">{{site.username}}</td>
+																			<td class="team">{% for student in site.user.student_set.all %}{% if student.user == site.user %}{{student.enrollment_no}}{% endif %}{% endfor %}</td>
+																			<td class="points">{{site.site_point}}</td>
+																			<td class="up-down">{{site.site_rank}}</td>
+																		</tr>
+																	
+																	 </font>
+																{% endif %}
+																{% endfor %}
+												
+												</tbody>
+											</table>
+										</div>
+									</div>
                                 </div>
                         </div>
                 </div>
@@ -373,25 +446,44 @@
                 <div role="tabpanel" class="tab-pane fade" id="CODEFORCES">
 			<div class="content">
 				<div class="well">
-                                    <div class="row"><center>
-                                        <div class="col-lg-3 col-md-3">Username</div><div class="col-lg-3 col-md-3">Enrollment No</div><div class="col-lg-3 col-md-3">Rating</div>
-                                    </center></div>
-                                    <ol type="1">
-				    {% for site in codeforces %}
-                                    {% if site.site.site_name == "codeforces" %}
-                                         {% if request.user == site.user %}
-                                         <font color="light-green">
-                                         {% else %}
-                                         <font color="black">
-                                         {% endif %}
-                                         <div class="row"><center>
-                                        <li> <div class="col-lg-3 col-md-3">{{site.username}}</div><div class="col-lg-3 col-md-3">{% for student in site.user.student_set.all %}{% if student.user == site.user %}{{student.enrollment_no}}{% endif %}{% endfor %}</div><div class="col-lg-3 col-md-3">{{site.site_rating}}</div>
-                                    </li></center></div>
-                                         </font>
-                                    {% endif %}
-                                    {% endfor %}
-                                      
-				    </ol>
+                                    <div class="container">
+									 
+										<div class="wrapper">
+											<table>
+												<thead>
+													<tr>
+														
+														<th>Username</th>
+														<th>Enrollment No</th>
+														<th>Rating</th>
+														
+													</tr>
+												</thead>
+												<tbody>
+											
+												{% for site in spoj %}
+																{% if site.site.site_name == "codeforces" %}
+																	 {% if request.user == site.user %}
+																	 <font color="light-green">
+																	 {% else %}
+																	 <font color="black">
+																	 {% endif %}
+																	
+																		<tr>
+																			<td class="rank">{{site.username}}</td>
+																			<td class="team">{% for student in site.user.student_set.all %}{% if student.user == site.user %}{{student.enrollment_no}}{% endif %}{% endfor %}</td>
+																			<td class="points">{{site.site_rating}}</td>
+																
+																		</tr>
+																	
+																	 </font>
+																{% endif %}
+																{% endfor %}
+												
+												</tbody>
+											</table>
+										</div>
+									</div>
                                 </div>
                         </div>
                 </div>
