@@ -198,16 +198,7 @@ def githubRank(username):
             i = i+7
 
     return (record)
-    #print(record)
-    #s=""
-    #record=[]
-    #f=1
-    #for i in len(b):
-        #c = b[i].text.lstrip().rstrip()
-        #if f==0:
-            #record.append(s)
-            #f=1
-        #for j in c and :
+
 
 def codebuddy(username):
     URL = "https://codebuddy.co.in/ranks/practice"

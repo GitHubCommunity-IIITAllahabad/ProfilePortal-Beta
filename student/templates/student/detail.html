@@ -2,11 +2,10 @@
 {% block title %}Details page{% endblock %}
 {% block body %}
 <div class="conatainer">
-		<div class="header" style="padding-top:-20px;margin-top:-20px;font-family: Raleway">Profile</div>
-		<hr id="header_l"><br>
+		<h1 style="padding-top:-10px;margin-top:10px;text-align:center;font-family:Raleway;color:#55acee">Profile</h1>
 </div>
 <div class="row">
-<div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+<div class="col-lg-2 col-md-3 col-sm-12 col-xs-12" style="font-family: Raleway;margin-left: 11px;text-align:center;color:#4D7F89">
 {% if student.image %}
 <img src="{{ student.image.url }}" class="img-responsive">
 {% endif %}
@@ -24,14 +23,13 @@
 <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 <div class="container">
 	  <!-- Nav tabs -->
-	  <ul class="nav nav-tabs" role="tablist" style="text-transform:uppercase;">
-		<li role="presentation" class="active"><a href="#TOPS" aria-controls="TOPS" role="tab" data-toggle="tab">Tops</a></li>
-		<li role="presentation"><a href="#GITHUB" aria-controls="GITHUB" role="tab" data-toggle="tab" style="font-size:15px;">GITHUB</a></li>
-		<li role="presentation"><a href="#SPOJ" aria-controls="SPOJ" role="tab" data-toggle="tab">SPOJ</a></li>
-		<li role="presentation"><a href="#CODECHEF" aria-controls="CODECHEF" role="tab" data-toggle="tab">CODECHEF</a></li>
-		<li role="presentation"><a href="#CODEBUDDY" aria-controls="CODEBUDDY" role="tab" data-toggle="tab">CODEBUDDY</a></li>
-                <li role="presentation"><a href="#CODEFORCES" aria-controls="CODEFORCES" role="tab" data-toggle="tab">CODEFORCES</a></li>
-
+	  <ul class="nav nav-tabs" role="tablist" >
+		<li role="presentation" class="active"><a href="#TOPS" aria-controls="TOPS" role="tab" data-toggle="tab" style="font-family:Raleway;font-size:21px;">Tops</a></li>
+		<li role="presentation"><a href="#GITHUB" aria-controls="GITHUB" role="tab" data-toggle="tab" style="font-family:Raleway;font-size:21px;">Github</a></li>
+		<li role="presentation"><a href="#SPOJ" aria-controls="SPOJ" role="tab" data-toggle="tab" style="font-family:Raleway;font-size:21px;">Spoj</a></li>
+		<li role="presentation"><a href="#CODECHEF" aria-controls="CODECHEF" role="tab" data-toggle="tab" style="font-family:Raleway;font-size:21px;">Codechef</a></li>
+		<li role="presentation"><a href="#CODEBUDDY" aria-controls="CODEBUDDY" role="tab" data-toggle="tab" style="font-family:Raleway;font-size:21px;">Codebuddy</a></li>
+    <li role="presentation"><a href="#CODEFORCES" aria-controls="CODEFORCES" role="tab" data-toggle="tab" style="font-family:Raleway;font-size:21px;">Codeforces</a></li>
 	  </ul>
 
 	  <br><br>
