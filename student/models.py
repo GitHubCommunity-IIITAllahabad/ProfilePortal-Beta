@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 
 #Model for user info
@@ -12,7 +13,7 @@ class Student(models.Model):
     first_name = models.CharField(max_length=200, default=None)
     last_name = models.CharField(max_length=200, default=None)
     email = models.EmailField(default=None,null=True)
-    current_semester = models.IntegerField(default=1, null=True)
+    current_semester = models.IntegerField(default=1,validators=[MaxValueValidator(8),MinValueValidator(0)])
     graduation_year = models.IntegerField(null=True)
     is_active = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)

@@ -116,7 +116,7 @@
       <div class="form-group">
       <button type='submit' class="center">Login</button>
       <br><br>
-      <button type='submit' class="center"><a href="{% url 'student:register' %}" style="color:white;">Register</a></button>
+      <button class="center"><a href="{% url 'student:register' %}" style="color:white;">Register</a></button>
 	</form>
 	<br><br>
 	<a href="{% url 'student:forgetpassword' %}"> ForgotPassword ? </a>
@@ -130,9 +130,9 @@
 </div>
 <br><br>
 
-{% if passwordSent %}
+{% if nj %}
 <script>
-    alert('{{ passwordSent }}');
+    alert('{{ nk }}');
 </script>
 {% endif %}
 </body>

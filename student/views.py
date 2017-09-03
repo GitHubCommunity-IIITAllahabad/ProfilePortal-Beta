@@ -287,14 +287,15 @@ class DetailView(generic.DetailView):
     model = Student
     template_name = 'student/detail.html'
 
-class AlbumCreate(CreateView):
-    model = Student
+# class AlbumCreate(CreateView):
+#     model = Student
 
 
 class StudentUpdate(UpdateView):
     model = Student
     fields = ['first_name','last_name','current_semester','graduation_year']
     success_url = reverse_lazy('student:index')
+
 
 class UserFormView(View):
     form_class = UserForm
