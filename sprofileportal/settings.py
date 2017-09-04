@@ -16,6 +16,8 @@ EMAIL_HOST_PASSWORD = 'softdev123'
 EMAIL_PORT = 587
 
 import os
+import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,7 +32,7 @@ SECRET_KEY = '7o*!mq2uhzd^3v_&6-pbho%+341y6g+rjk+e0_&rxe)1t)8rw@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/studentportal/'
 # Application definition
