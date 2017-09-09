@@ -17,6 +17,7 @@ EMAIL_PORT = 587
 
 import os
 import dj_database_url
+from django.contrib.sites.shortcuts import get_current_site
 # DATABASES['default'] = dj_database_url.config()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -34,7 +35,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/studentportal/'
+
+
+LOGIN_REDIRECT_URL = 'http://profile-portal.herokuapp.com/studentportal/'
 # Application definition
 
 INSTALLED_APPS = [
