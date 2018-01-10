@@ -35,9 +35,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+#Uncomment this when in dev mode
+LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/studentportal/'
 
-
-LOGIN_REDIRECT_URL = 'http://profile-portal.herokuapp.com/studentportal/'
+# Uncomment this when in production mode
+# LOGIN_REDIRECT_URL = 'http://profile-portal.herokuapp.com/studentportal/'
 # Application definition
 
 INSTALLED_APPS = [
@@ -85,7 +87,14 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config()
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'profileportal',
+        'USER': 'profileportal',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
+     }
 }
 try:
     from .local_settings import *
@@ -130,9 +139,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/

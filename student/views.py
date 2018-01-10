@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
+# import necessary modules and libs
 from __future__ import unicode_literals
-
 from django.conf import settings
 from django.contrib import messages
 from django.core.mail import send_mail
@@ -26,84 +26,77 @@ from bs4 import BeautifulSoup
 import string
 import random
 
-WorkingBaseURL = ' '
+
+WorkingBaseURL = ' '  # A global variable for the current URL which the user is working on (intialized to none) 
 
 def RedirectSite(request):
     CurrentURL = get_current_site(request)
     RedirectURL = 'http://' + str(CurrentURL) + '/studentportal/'
-    #print(RedirectURL)
+    # To check the redirected url and current urls uncomment the below lines
+    # print(RedirectURL)
+    # print(CurrentURL)
     WorkingBaseURL = RedirectURL
     return redirect(RedirectURL)
 
-def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
+def id_generator(size=6, chars=string.ascii_uppercase + string.digits):  # randon id generator for e-mail password funtionality
     return ''.join(random.choice(chars) for _ in range(size))
 
-def codechef(username):
+def codechef(username):  # Funtion to scape the data from codechef
     head = "https://wwww.codechef.com/users/"
     URL = head + username
-
     page  = requests.get(URL)
     soup = BeautifulSoup(page.content,'html.parser')
-
     #These three lines give the Rating of the user.
     listRating = list(soup.findAll('div',class_="rating-number"))
     rating = list(listRating[0].children)
     rating = rating[0]
     out = str(rating.replace(',',''))
-    #print ("Rating: "+rating)
-
     listGCR = []  #Global and country ranking.
     listRanking = list(soup.findAll('div',class_="rating-ranks"))
     rankingSoup = listRanking[0]
     for item in rankingSoup.findAll('a'):
             listGCR.append(item.get_text()) #Extracting the text from all anchor tags
-    #print ("Global Ranking: "+listGCR[0])
-    #print ("Country Ranking: "+listGCR[1])
+    # Uncomment the below 2 lines to print the output on the console
+    # print ("Global Ranking: "+listGCR[0])     
+    # print ("Country Ranking: "+listGCR[1])
     out = out + " " + str(listGCR[0].replace(',',''))
     return out
 
-def spoj(username):
+def spoj(username):   #Function to scrape data from spoj
     base = "https://spoj.com/users/"
     var = username
     url = base + var
     sauce = requests.get(url)
     soup = BeautifulSoup(sauce.content,'html.parser')     # lxml is a parser
-    #print(soup.prettify())
     iList = []
     info = (soup.find_all('p'))
     for i in info:
         iList.append(i.text)
-
-    #print (iList[2]) #World rank
-    #print (iList[3]) #Institution
-    no_of_questions = int((soup.find('dd').text).replace(',',''))
-    #print(" no. of questions = ",no_of_questions)
+    no_of_questions = int((soup.find('dd').text).replace(',',''))  #no. of questions is stored
     s = str(iList[2].lstrip())+" "+str(no_of_questions)
-    return s
+    return s  #return the number of questions solved
 
 def github(username):
     url = "https://github.com/"+username
     sauce = requests.get(url)
     soup = BeautifulSoup(sauce.content,'html.parser')     # lxml is a parser
     #print(soup)
-
     things = soup.find_all('span',class_='Counter')
     repoNo = int(things[0].text)
     starsNo = int(things[1].text)
     FollowersNo = int(things[2].text)
     FollowingNo = int(things[3].text)
-
     contribution = (soup.find('h2',class_='f4 text-normal mb-2').text).lstrip().split(" ")
     contribution_no = int(contribution[0].replace(',',''))
     #print (contribution_no)
     s = str(repoNo)+" "+str(starsNo)+" "+str(FollowersNo)+" "+str(FollowingNo)+" "+str(contribution_no)
     return (s)
 
-def githubRank(username):
+# Temporary critetion for githubRank - Might be removed later.
+def githubRank(username):   #Function to decide the rank critetion for github
     head = "http://git-awards.com/users/"
     var = username
     URL = head + var
-
     page  = requests.get(URL)
     soup = BeautifulSoup(page.content,'html.parser')
     a = list(soup.findAll('div',class_='col-md-3 info'))
@@ -122,7 +115,6 @@ def githubRank(username):
                 if j!="ranking":
                     s+=j+" "
             lang.append(s.rstrip())
-
     #print(lang)
     record = []
     s=""
@@ -196,11 +188,10 @@ def githubRank(username):
             record.append(s)
             k+=1
             i = i+7
-
     return (record)
+# End of GithubRank block
 
-
-def codebuddy(username):
+def codebuddy(username):  #Function to scrape data from codebuddy
     URL = "https://codebuddy.co.in/ranks/practice"
     page  = requests.get(URL)
     soup = BeautifulSoup(page.content,'html.parser')
@@ -213,13 +204,12 @@ def codebuddy(username):
             return (output)
     return (-1)
 
-def codeforces(username):
+def codeforces(username):   # function to scrape data from codeforces
     head = 'http://codeforces.com/profile/'
     var = username
     URL = head + var
     page = requests.get(URL)
     soup = BeautifulSoup(page.content,'html.parser')
-
     listRating = list(soup.findAll('div',class_="user-rank"))
     CheckRating = listRating[0].get_text()  #Check for rated or unrated
     if str(CheckRating) == '\nUnrated \n':
@@ -441,10 +431,8 @@ class StudentFormView(View):
         return render(request, self.template_name, {'form': form})
 
 class UpdateStudentFormView(View):
-
     form_class = StudentForm
     template_name = 'student/studentupdate.html'
-
     def get(self, request):
         if request.user.is_authenticated():
             my_record = Student.objects.filter(id=request.user.id)
@@ -456,11 +444,9 @@ class UpdateStudentFormView(View):
                 return redirect('student:studentcreate')
         else:
             return redirect('student:index')
-
     def post(self, request):
         my_record = Student.objects.get(id=request.user.id)
         form = self.form_class(request.POST,instance=my_record)
-
         if form.is_valid():
             student = form
             student.save()
@@ -476,7 +462,6 @@ class UpdateStudentSiteFormView(View):
             my_record = StudentSite.objects.filter(user=request.user)
             # print(my_record)
             for record in my_record:
-
                 if record.site.site_name == 'codechef':
                     out = codechef(record.username).split(" ")
                     record.site_rating = int(out[0])
@@ -490,7 +475,6 @@ class UpdateStudentSiteFormView(View):
                     record.site_following = int(out[3])
                     record.site_contribution = int(out[4])
                     record.save()
-
                 if record.site.site_name == 'spoj':
                     out = spoj(record.username).split(" ")
                     record.site_rank = int(out[2].lstrip('#'))
@@ -507,8 +491,7 @@ class UpdateStudentSiteFormView(View):
                     out = codeforces(record.username)
                     record.site_rating = out
                     record.save()
-            # s = "http://127.0.0.1:8000/studentportal/"+str(request.user.id)+"/"
-            CurrentURL = get_current_site(request)
+            CurrentURL = get_current_site(request)   
             RedirectURL = 'http://' + str(CurrentURL) + '/studentportal/' + str(request.user.id) + "/"
             # print(s)
             # print(CurrentURL)
@@ -516,22 +499,17 @@ class UpdateStudentSiteFormView(View):
         else:
             return redirect('student:index')
 
-
 class StudentSiteFormView(View):
-
     form_class = StudentSiteForm
     template_name = 'student/addsite.html'
-
     def get(self, request):
         if request.user.is_authenticated():
             form = self.form_class(None)
             return render(request, self.template_name, {'form': form})
         else:
             return redirect('student:index')
-
     def post(self, request):
         form = self.form_class(request.POST)
-
         if form.is_valid():
             my_record = StudentSite.objects.filter(user=request.user)
             flag=0
@@ -542,7 +520,6 @@ class StudentSiteFormView(View):
             for record in my_record:
                 if record.site.site_name == str(form.cleaned_data.get('site').site_name) and record.username.lower() == str(form.cleaned_data.get('username').lower()):
                     flag=1
-
             if flag==0:
                 studentsite = form.save(commit=False)
                 studentsite.user = request.user
@@ -573,23 +550,18 @@ class StudentSiteFormView(View):
                     out = codeforces(form.cleaned_data['username'])
                     print(out)
                     studentsite.site_rating = out
-
                 studentsite.save()
-                # s = "http://127.0.0.1:8000/studentportal/"+str(request.user.id)+"/"
                 CurrentURL = get_current_site(request)
                 RedirectURL = 'http://' + str(CurrentURL) + '/studentportal/' + str(request.user.id) + "/"
                 return redirect(RedirectURL)
             else:
-                # s = "http://127.0.0.1:8000/studentportal/"+str(request.user.id)+"/"
                 return render(request,self.template_name,{'message': 'Username for for the site Already added','form':form})
-
         else:
             return render(request, self.template_name, {'form': form})
-
         return render(request, self.template_name, {'form': form})
 
+# Temporary view - might be removed later
 class GithubRankView(View):
-
     def get(self,request):
         my_site=Site.objects.filter(site_name="github")
         my_record = StudentSite.objects.filter(user=request.user)
@@ -620,9 +592,7 @@ class GithubRankView(View):
                             my_lang.stars = int(record[13])
                             my_lang.save()
                     else:
-
                         if record[1]=='0':
-
                             instance = GithubRank(user=request.user,language=record[0],world_rank=int(record[4]),world_total=int(record[5]),repos=int(record[7]),stars=int(record[9]))
                             instance.save()
                         else:
@@ -631,19 +601,18 @@ class GithubRankView(View):
                             instance.save()
         CurrentURL = get_current_site(request)
         RedirectURL = 'http://' + str(CurrentURL) + '/studentportal/' + str(request.user.id)+"/"
-
         s = RedirectURL
         return redirect(s)
-
+# End of the gitHubRankView
 
 class RanksView(View):
-
     def get(self,request):
         codechef = StudentSite.objects.filter().order_by('-site_rating')
         spoj = StudentSite.objects.filter().order_by('-site_point')
         github = StudentSite.objects.filter().order_by('-site_contribution')
         codebuddy = StudentSite.objects.filter().order_by('-site_point')
         codeforces = StudentSite.objects.filter().order_by('-site_rating')
+        # Language ranking - Github - Temporary
         javascript = GithubRank.objects.filter(language="javascript").order_by('world_rank')
         c = GithubRank.objects.filter(language="c").order_by('world_rank')
         cpp = GithubRank.objects.filter(language="c++").order_by('world_rank')
@@ -653,10 +622,9 @@ class RanksView(View):
         css = GithubRank.objects.filter(language="css").order_by('world_rank')
         processing = GithubRank.objects.filter(language="processing").order_by('world_rank')
         ruby = GithubRank.objects.filter(language="ruby").order_by('world_rank')
-
+        # Language ranking ends here
         context = {'codechef':codechef, 'spoj':spoj, 'github':github,'codebuddy':codebuddy,'codeforces':codeforces,'javascript':javascript,'c':c,'cpp':cpp,'php':php,'python':python,'html':html,'css':css,'processing':processing,'ruby':ruby}
         return render(request,'student/ranks.html',context)
-
 
 def logout_view(request):
     logout(request)

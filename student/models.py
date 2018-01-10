@@ -19,20 +19,16 @@ class Student(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     #image = models.FileField(blank=True, null=True)
-
     def __unicode__(self):
         return unicode(self.user)
-
     def __str__(self):
         return self.user
 
 class Site(models.Model):
-
     site_type = models.CharField(max_length=100, default=None)
     site_name = models.CharField(max_length=200, default=None)
     site_active = models.BooleanField(default=False)
     site_count = models.IntegerField(default=0)
-
     def __str__(self):
         return self.site_name
 
@@ -51,7 +47,6 @@ class StudentSite(models.Model):
     site_following = models.IntegerField(default=None,null=True)
     is_active = models.BooleanField(default=False)
     no_of_sites = models.IntegerField(default=None,null=True)
-
     def __str__(self):
         return str(self.user) + " - " + str(self.site)
 
@@ -68,6 +63,5 @@ class GithubRank(models.Model):
     world_total = models.IntegerField(default=None,null=True)
     repos = models.IntegerField(default=None,null=True)
     stars = models.IntegerField(default=None,null=True)
-
     def __str__(self):
         return self.language
