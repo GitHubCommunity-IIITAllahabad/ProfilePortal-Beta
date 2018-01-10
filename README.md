@@ -14,7 +14,7 @@
 
 ### Setup an environment:
 ```
-git clone https://github.com/RavicharanN/proj-profilePortal
+git clone https://github.com/GitHubCommunity-IIITAllahabad/ProfilePortal-Beta
 cd proj-Profileportal
 virtualenv venv
 source venv/bin/activate
