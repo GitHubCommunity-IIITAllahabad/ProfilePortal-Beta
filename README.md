@@ -1,5 +1,6 @@
 
 
+
 # Profile-Portal
 * Consolidated profile portal for the members of an organisation.
 * The portal is intended for IT/CS based orgs. where the data is grabbed from common websites like SPOJ, Codechef, GitHub, Codeforces, Codebuddy etc. and displayed in a consolidated form.
@@ -55,7 +56,7 @@ python manage.py runserver
 * [Click Here](https://pip.pypa.io/en/stable/installing/) for the guidlines to install pip on your machine.
 
 **Note:** Register functionality has been currently disbaled. And all the opencode participants are requested to login using the following credentials : <br>
-**Username:** user1, user2, user3, user4 (Anyone can be used).
+**Username:** user1, user2, user3, user4 (Anyone can be used).<br>
 **Password:** test1234
 
 
