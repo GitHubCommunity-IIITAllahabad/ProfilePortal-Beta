@@ -15,7 +15,7 @@
 {% if request.user.id == student.user.id %}
 <h3><a href="{% url 'student:studentsite' %}" style="font-family: Raleway">Add Site</a></h3>
 <h3><a href="{% url 'student:studentsiteupdate' %}" style="font-family: Raleway">Update Site</a></h3>
-<h3><a href="{% url 'student:userpasswordchange' %}" style="font-family: Raleway">Change Password</a></h3>
+<!-- <h3><a href="{% url 'student:userpasswordchange' %}" style="font-family: Raleway">Change Password</a></h3> -->
 {% else %}
 <br>
 {% endif %}

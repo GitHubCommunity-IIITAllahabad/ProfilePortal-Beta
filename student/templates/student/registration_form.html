@@ -122,25 +122,24 @@
 </nav>
 
 {% if not user.username %}
-<h3 style ="text-align: center;color: #55acee;font-family:Raleway;">Your password will be mailed to your registered Email address</h3>
+<!-- <h3 style ="text-align: center;color: #55acee;font-family:Raleway;">Your password will be mailed to your registered Email address</h3> -->
 {% else %}
 <h3 style ="text-align: center;font-family: Raleway">Welcome {{user.username}}</h3>
 {% endif %}
 
 <!--Form-->
 
+<h3 style ="text-align: center;color: #55acee;font-family:Raleway;">Registration form will remain disbled until Opencode ends</h3>
+
 <div class="login-page">
   <div class="form">
-    <form class="login-form" method="POST" action="." role="form">
+    <!-- <form class="login-form" method="POST" action="." role="form"> -->
     	{% csrf_token %}
       <input id="id_username" type="text" placeholder="Username" name="username"/>
       <input id="id_email" type="text" placeholder="E-mail" name="email"/>
       <div class="form-group">
       <button type='submit' class="center">Submit</button>
-
-
-	</form>
-
+	<!-- </form> -->
   </div>
 </div>
 <br>
