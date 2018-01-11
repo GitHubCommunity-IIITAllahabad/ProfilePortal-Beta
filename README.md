@@ -1,5 +1,5 @@
 
-
+Join our [gitter channel](https://gitter.im/ProfilePortal/) for any queries.
 
 # Profile-Portal
 * Consolidated profile portal for the members of an organisation.
