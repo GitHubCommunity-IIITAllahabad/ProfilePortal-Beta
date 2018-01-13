@@ -18,5 +18,17 @@
 			"github_profile" : "https://github.com/adiagg2000",
 			"screenshot" : "aditi.jpg"
 		},
+
+		{
+			"name" : "Suras Kumar Nayak",
+			"github_profile" : "https://github.com/surasnayak",
+			"screenshot" : "suras.jpg"
+		},
+		
+		{
+			"name" : "Abhishek Singh Saini",
+			"github_profile" : "https://github.com/AbhiTaker",
+			"screenshot" : "abhitaker.png"
+		}
 	]
 }
