@@ -36,7 +36,7 @@ Join our [gitter channel](https://gitter.im/ProfilePortal/) for any queries.
 ### Setup an environment:
 ```
 git clone https://github.com/GitHubCommunity-IIITAllahabad/ProfilePortal-Beta
-cd proj-Profileportal
+cd ProfilePortal-Beta
 virtualenv venv
 source venv/bin/activate
 ```
