@@ -36,7 +36,7 @@
 			"screenshot" : "abhitaker.png"
 		},
         
-        {
+        	{
 			"name" : "Sneha Mishra",
 			"github_profile" : "https://github.com/Tlazypanda",
 			"screenshot" : "sneha.jpg"
@@ -46,6 +46,12 @@
 			"name" : "Divy Khare",
 			"github_profile" : "https://github.com/Divy123",
 			"screenshot" : "31225007/35014845-2ee23934-fb38-11e7-8afe-9526c4086d7d.png"
-}
+		},
+		{
+			"name" : "Aayush Chaudhry",
+			"github_profile" : "https://github.com/maverick0004",
+			"screenshot" : "maverick0004.png"
+		}
+		
 	]
 }
